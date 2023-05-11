@@ -29,18 +29,15 @@ const Slidepost = ({url,page}) => {
 
     const slidOption={
         perPage: 4,
-        rewind : true,
-        focus  : 'center',
         pagination: false,
+        type    : 'loop',
+        autoplay: true,
         breakpoints:{
           950:{
             perPage: 4,
           },
           750:{
             perPage: 3,
-          },
-          550:{
-            perPage: 2,
           },
           550:{
             perPage: 1,
@@ -54,7 +51,7 @@ const Slidepost = ({url,page}) => {
               results.filter(item=>item.backdrop_path)
               .map(newItem=>
                 <SplideSlide>
-                <img src={`https://image.tmdb.org/t/p/${isNarrowScreen?'w185':'w300'}/${newItem.backdrop_path}`} alt="" />
+                <img src={`https://image.tmdb.org/t/p/w300/${newItem.backdrop_path}`} alt="" />
                 </SplideSlide>
                 )
             }
