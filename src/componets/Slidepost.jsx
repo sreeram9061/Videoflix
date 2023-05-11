@@ -43,24 +43,21 @@ const Slidepost = ({url,page}) => {
             perPage: 2,
           },
           550:{
-            perPage: 2,
+            perPage: 1,
           }
         }
     }
   return (
     <div className="splidercontaienr">
-              <Splide options={slidOption} >
-            {results?.map(item=>{
-                  if(!item.backdrop_path) {
-                    return null
-                  }else{
-                    return(
-                      <SplideSlide>
-                      <img src={`https://image.tmdb.org/t/p/${isNarrowScreen?'w185':'w300'}/${item.backdrop_path}`} alt="" />
-                      </SplideSlide>
-                    )
-                  }
-            })}
+        <Splide options={slidOption} >
+            {
+              results.filter(item=>item.backdrop_path)
+              .map(newItem=>
+                <SplideSlide>
+                <img src={`https://image.tmdb.org/t/p/${isNarrowScreen?'w185':'w300'}/${newItem.backdrop_path}`} alt="" />
+                </SplideSlide>
+                )
+            }
         </Splide >
     </div>
   )
