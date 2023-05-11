@@ -6,7 +6,13 @@ const Card = ({titile}) => {
   return (
     <div className="cardsection">
         <h2>{titile}</h2>
-      
+        <div className="cardcontainer">
+            {
+                results.map(item=>
+                    <img src={`https://image.tmdb.org/t/p/w154/${item.poster_path}`} alt="" />
+                    )
+            }
+        </div>
     </div>
   )
 }

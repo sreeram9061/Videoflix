@@ -8,7 +8,6 @@ const Slider = ({results,errorInfo}) => {
         pagination: false,
         speed: 500,
         cover: true,
-        type    : 'loop',
         autoplay: true,
         padding: "0",
         breakpoints: {

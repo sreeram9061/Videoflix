@@ -12,14 +12,17 @@ function Home() {
 
         <Slider {...{results,errorInfo}}/>
         <div className="slidepost" >
-          <Wrapper>
+         
              <div className="container"  >
+             <Wrapper>
                <h2>Best Tv show</h2>
+            </Wrapper>
                <Slidepost {...{url:'/tv/on_the_air',page:1}}/>
                <Slidepost  {...{url:'/tv/on_the_air',page:2}}/>
              </div>
+             <Wrapper>
              <Card titile={'Now Playing Movies'}/>
-          </Wrapper>
+             </Wrapper>
         </div>
 
     </>

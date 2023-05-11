@@ -26,13 +26,17 @@ const Slidepost = ({url,page}) => {
  
 
     const[results,errorInfo]=useFetch(url,{page})
-
+    console.log(results)
     const slidOption={
-        perPage: 4,
+        perPage:'5',
         pagination: false,
-        type    : 'loop',
         autoplay: true,
+        padding:'0',
+        autoWidth: true,
         breakpoints:{
+          1230:{
+            perPage:4,
+          },
           950:{
             perPage: 4,
           },
@@ -40,7 +44,7 @@ const Slidepost = ({url,page}) => {
             perPage: 3,
           },
           550:{
-            perPage: 1,
+            perPage: 2,
           }
         }
     }
@@ -50,8 +54,9 @@ const Slidepost = ({url,page}) => {
             {
               results.filter(item=>item.backdrop_path)
               .map(newItem=>
-                <SplideSlide>
+                <SplideSlide key={newItem.id} style={{fontSize:'16px'}}>
                 <img src={`https://image.tmdb.org/t/p/w300/${newItem.backdrop_path}`} alt="" />
+                <h1>{newItem.original_name}</h1>
                 </SplideSlide>
                 )
             }
