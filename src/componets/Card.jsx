@@ -9,7 +9,7 @@ const Card = ({titile}) => {
         <div className="cardcontainer">
             {
                 results.map(item=>
-                    <img src={`https://image.tmdb.org/t/p/w154/${item.poster_path}`} alt="" />
+                    <img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="" />
                     )
             }
         </div>

@@ -203,10 +203,6 @@
     @include flexBox(column ,none,none,10px);
     padding: 20px 0;
     .cardcontainer{
-/*         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 10px; */
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
         justify-items: stretch;
