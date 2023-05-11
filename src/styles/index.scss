@@ -1,0 +1,199 @@
+@import 'resets';
+@import 'maxins';
+@import 'colors';
+
+
+.wrapper{
+    width: 100%;
+    max-width: 1280px;
+    padding: 0px 20px;
+    margin: 0px auto;
+}
+
+/* heder com */
+.header{
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    
+    h2{
+        font-family: sans-serif;
+        color: $primerycolor; 
+    }
+    h3{
+        color:white;
+        font-size: 17px;
+    }
+
+    padding: 20px 0;
+    .container{
+        @include flexBox(row,center,space-between,0);
+        .leftinner{
+            @include flexBox(row,center,center,35px);
+            h2{
+                cursor: pointer;
+            }
+            h3{
+                cursor: pointer;
+            }
+        }
+        .rightinner{
+            @include flexBox(row,center,center,35px);
+            .searchicon{
+                color: white;
+                font-size: 18px;
+                cursor: pointer;
+            }
+            h3{
+                cursor: pointer;
+            }
+    
+            .status{
+                display: none;
+            }
+        }
+
+    }
+
+}
+
+/* slider */
+.slider{
+    background-color:$backgroundcolor;
+    .innerslider{
+        .wrraperdiscription{
+            height: 100%;
+            @include flexBox(column,center,center,20px);
+            .discription{
+                @include flexBox(column,end,center,20px);
+                width: 100%;
+                max-width: 1280px;
+                padding: 0px 20px;
+                margin: 0px auto;
+                .shadow{ 
+                    text-shadow: -2px -2px 6px black;  
+                }
+                h1{
+                    color: whitesmoke;
+                    font-size: clamp(1.5rem, 5.543vw + 0.066rem, 4.5rem);
+                    line-height: clamp(2.1rem, 6.097vw + 0.522rem, 5.4rem);
+                    font-family: sans-serif;
+                }
+    
+                .btnsRating{
+                    @include flexBox(row,center,end,15px);
+                    button{
+                        width: 150px;
+                        height: 50px;
+                        border: none;
+                        outline: none;
+                        font-size: 16px;
+                        font-family: sans-serif;
+                        cursor: pointer;
+                    }
+                    p{
+                        width: fit-content;
+                    }
+                    .btnone{
+                        transition: ease-in-out .3s;
+                        background-color:#d90000ff;
+                        &:hover{
+                           background: transparent;
+                           color: white;
+                           border: 2px solid $primerycolor;
+                        }
+                    }
+                    .btntow{
+                        transition: ease-in-out .3s;
+                        &:hover{
+                           background: transparent;
+                           color: white;
+                           border: 2px solid $primerycolor;
+                        }
+                    }
+    
+                }
+                p{
+                    color: white;
+                    text-align: end;
+                    width: 600px;
+                    font-size: 20px;
+                }
+                .reating{
+                    @include flexBox(row,center,end,0)
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+/* mobileslider*/
+.mobileslider{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: calc(100% - 67px);
+    background-color: $backgroundcolor;
+    @include flexBox(column,center,center,10px);
+    P{
+        color: white;
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+       
+        &:hover{
+            background-color: $backgroundcolorlight;
+        }
+
+    }
+}
+
+
+.slidepost{
+    background-color: $backgroundcolor;
+    box-shadow: 0 10px 34px black inset;
+    padding: 30px 0;
+    h2{
+        font-size: clamp(1.5rem, 1.743vw + 0.066rem, 4.5rem);
+       /*  line-height: clamp(2.1rem, 6.097vw + 0.522rem, 5.4rem); */
+        color: $primerycolor;
+        font-family: sans-serif;
+        
+        
+    }
+    .container{
+        @include flexBox(column,none,none,10px);
+        .splide{
+            .splide__track{
+                
+                ul{
+                    li{
+                        display: flex;
+                        justify-content: center;
+                        position: relative;
+                        img{
+                            opacity: 3.5;
+    
+                        }
+                        .discreption{
+                            position: absolute;
+                            left: 10px;
+                            bottom: 0;
+                           h1{
+                            color: white;
+                           }
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}

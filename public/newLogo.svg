@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="19.738823mm"
+   height="11.686996mm"
+   viewBox="0 0 19.738823 11.686996"
+   version="1.1"
+   id="svg2368"
+   inkscape:export-filename="newLogo.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2370"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false" />
+  <defs
+     id="defs2365">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2583">
+      <rect
+         style="opacity:0.5;fill:#0000ff;fill-rule:evenodd;stroke-width:0.264583"
+         id="rect2585"
+         width="21.055969"
+         height="12.88293"
+         x="107.8195"
+         y="116.639"
+         ry="0.032121066" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2587">
+      <rect
+         style="opacity:0.5;fill:#0000ff;fill-rule:evenodd;stroke-width:0.264583"
+         id="rect2589"
+         width="21.055969"
+         height="12.88293"
+         x="107.8195"
+         y="116.639"
+         ry="0.032121066" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-108.68801,-117.28083)">
+    <text
+       xml:space="preserve"
+       style="font-size:8.55377px;font-family:'Tw Cen MT Condensed Extra Bold';-inkscape-font-specification:'Tw Cen MT Condensed Extra Bold, Normal';fill:#d90000;stroke-width:0.104;stroke-linejoin:round"
+       x="108.60448"
+       y="123.01119"
+       id="text2491"
+       clip-path="url(#clipPath2587)"><tspan
+         sodipodi:role="line"
+         id="tspan2489"
+         style="stroke-width:0.104"
+         x="108.60448"
+         y="123.01119">VIDEO</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.55377px;font-family:'Tw Cen MT Condensed Extra Bold';-inkscape-font-specification:'Tw Cen MT Condensed Extra Bold, Normal';fill:#d90000;stroke-width:0.104;stroke-linejoin:round"
+       x="114.69963"
+       y="128.96782"
+       id="text2495"
+       clip-path="url(#clipPath2583)"><tspan
+         sodipodi:role="line"
+         id="tspan2493"
+         style="stroke-width:0.104"
+         x="114.69963"
+         y="128.96782">FLIX</tspan></text>
+  </g>
+</svg>

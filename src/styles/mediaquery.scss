@@ -1,0 +1,51 @@
+@import 'resets';
+@import 'maxins';
+@import 'colors';
+
+@media (max-width: 940px){
+
+    .header{
+        position: relative;
+        background-color: $backgroundcolor;
+        .container{
+            .leftinner{
+                h3{
+                    display: none;
+                }
+            }
+            .rightinner{
+                h3{
+                    display: none;
+                }
+                .status{
+                    display: block;
+                }
+            }
+
+        }
+
+    }
+
+    .slider{
+        .innerslider{
+            .wrraperdiscription{
+                @include flexBox(column,end,end,0);
+               padding-bottom: 40px;
+                .discription{
+                    gap: 5px;
+                    .btnsRating{
+                        button{
+                            display: none;
+                        }
+                    }
+                    p{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    
+
+}
