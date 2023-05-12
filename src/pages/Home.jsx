@@ -12,7 +12,6 @@ function Home() {
 
         <Slider {...{results,errorInfo}}/>
         <div className="slidepost" >
-         
              <div className="container"  >
              <Wrapper>
                <h2>Best Tv show</h2>
@@ -21,7 +20,8 @@ function Home() {
                <Slidepost  {...{url:'/tv/on_the_air',page:2}}/>
              </div>
              <Wrapper>
-             <Card titile={'Now Playing Movies'}/>
+             <Card titile={'Now Playing Movies'} url={'/movie/popular'}/>
+             <Card titile={'Tv show '} url={'/tv/airing_today'}/>
              </Wrapper>
         </div>
 

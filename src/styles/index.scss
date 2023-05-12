@@ -66,7 +66,7 @@
             height: 100%;
             @include flexBox(column,center,center,20px);
             .discription{
-                @include flexBox(column,end,center,20px);
+                @include flexBox(column,start,center,20px);
                 width: 100%;
                 max-width: 1280px;
                 padding: 0px 20px;
@@ -116,7 +116,6 @@
                 }
                 p{
                     color: white;
-                    text-align: end;
                     width: 600px;
                     font-size: 20px;
                 }
@@ -199,13 +198,60 @@
 
 }
 
+
 .cardsection{
     @include flexBox(column ,none,none,10px);
-    padding: 20px 0;
+    padding-top:30px;
     .cardcontainer{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
         justify-items: stretch;
         grid-gap: 10px;
+        .imgcontainer{
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            &:hover .cdimg{
+                scale: 1.1;
+
+            }
+            .cdimg{
+                width: 100%;
+                transition: ease .5s;
+            }
+
+        }
+    }
+    .showfullcontent{
+        @include flexBox(row,center,end,0);
+        padding-top: 10px;
+        button{
+            width:80px;
+            height: 35px;
+            color: white;
+            background-color: $primerycolor;
+            border: none;
+            cursor: pointer;
+            transition: ease .3s;
+            &:hover{
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+
+footer{
+    @include flexBox(column,center,center,5px);
+    font-size: 16px;
+    background-color: $backgroundcolor;
+    padding: 2em 0;
+    h1{
+        font-size: 2em;
+        color: $primerycolor;
+    }
+    p{
+        font-size: 1em;
+        color: white;
     }
 }
