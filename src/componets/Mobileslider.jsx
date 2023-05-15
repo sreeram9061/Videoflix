@@ -12,10 +12,13 @@ function Mobileslider() {
   const mobileNav=useRef()
 
   const handleScroll=(e)=>{
-    const scrol=document.body.scrollTop || document.documentElement.scrollTop
+    console.log(document.documentElement.scrollTop+window.innerHeight)    
+ 
+    console.log(document.documentElement.scrollHeight)        
 
-    if(scrol+window.innerHeight>=document.documentElement.scrollHeight){
-      mobileNav.current.style.transform='translateY(2000px)'
+    if(document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight-1){
+      console.log('yes')
+      mobileNav.current.style.transform='translateY(200px)'
     }else{
       mobileNav.current.style.transform='translateY(0)'
     }
