@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 
 export const useFetch=(url,custoumParams={})=>{
    const [results,setResults] =useState([])
-   const [errorInfo,setError] =useState('')
+   const [errorInfo,setError] =useState(null)
+   const [loading,setLoading]=useState(true)
     const{page}=custoumParams
 
     const option={
@@ -21,12 +22,14 @@ export const useFetch=(url,custoumParams={})=>{
             try {
                 const respons = await axios(option)
                 setResults(respons.data.results)
+                setLoading(false)
             }catch (error){
                 setError(error.message)
+                setLoading(false)
             }
         }
         fetch()
     },[page])
 
-    return [results,errorInfo]
+    return [results,errorInfo,loading]
 }

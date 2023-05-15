@@ -1,19 +1,18 @@
 import { useState } from "react"
 import { useFetch } from "../customHocks/useFetch"
 
-const Card = ({titile,url}) => {
-   const [results,errorInfo]= useFetch(url,{page:5})
+const Card = ({titile,result}) => {
+
    const[lengthState,setLengthState]=useState(false)
-   console.log(results)
   return (
     <div className="cardsection">
         <h2>{titile}</h2>
         <div className="cardcontainer">
           {
-            results.map((item,index)=>{
+            result.map(({id,poster_path},index)=>{
                if(index<12 || lengthState){
-                 return <div className="imgcontainer">
-                  <img key={item.id} className="cdimg" src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="" />
+                 return <div key={id} className="imgcontainer">
+                  <img  className="cdimg" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
                  </div>
                }
             })

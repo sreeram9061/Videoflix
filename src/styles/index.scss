@@ -10,6 +10,11 @@
     margin: 0px auto;
 }
 
+.home{
+    background-color: $backgroundcolor;
+    min-height: 100vh;
+}
+
 /* heder com */
 .header{
     width: 100%;
@@ -61,6 +66,7 @@
 /* slider */
 .slider{
     background-color:$backgroundcolor;
+
     .innerslider{
         .wrraperdiscription{
             height: 100%;
@@ -71,8 +77,11 @@
                 max-width: 1280px;
                 padding: 0px 20px;
                 margin: 0px auto;
+                opacity: 0;
+                transition: all ease-in-out .4s;
+                transform: translatey(100px);
                 .shadow{ 
-                    text-shadow: -2px -2px 6px black;  
+                   text-shadow: -2px -2px 6px black;  
                 }
                 h1{
                     color: whitesmoke;
@@ -80,7 +89,6 @@
                     line-height: clamp(2.1rem, 6.097vw + 0.522rem, 5.4rem);
                     font-family: sans-serif;
                 }
-    
                 .btnsRating{
                     @include flexBox(row,center,end,15px);
                     button{
@@ -129,26 +137,36 @@
 
     }
 
+    .innerslider.is-active{
+        .wrraperdiscription{
+            .discription{
+                transform: translatey(0);
+                opacity: 1;
+            }
+        }
+    }
+
 }
 
 /* mobileslider*/
 .mobileslider{
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     z-index: 3;
     width: 100%;
-    height: calc(100% - 67px);
-    background-color: $backgroundcolor;
-    @include flexBox(column,center,center,10px);
-    P{
-        color: white;
-        padding: 10px 0;
-        width: 100%;
-        text-align: center;
-       
-        &:hover{
-            background-color: $backgroundcolorlight;
+    background-color:$backgroundcolor;
+    @include flexBox(row,center,center,16px);
+    display: none;
+    padding: 7px 0;
+    .nav-child{
+        cursor: pointer;
+        @include flexBox(column ,center,center,1px);
+        .icons{
+            color: white;
         }
-
+        p{
+            color: white;
+        }
     }
 }
 
@@ -254,4 +272,27 @@ footer{
         font-size: 1em;
         color: white;
     }
+}
+
+/* error msg*/
+.errorcom{
+    width: 100%;
+    height: 100vh;
+    @include flexBox(row,center,center,0);
+    background:$backgroundcolor;
+    .containerError{
+        width: 100%;
+        color: white;
+        @include flexBox(column,center,center,0);
+        img{
+            width: 30%;
+        }
+    }
+
+}
+
+.loading{
+    height: 100vh;
+    width: 100vw;
+    @include flexBox(column,center,center,0);
 }

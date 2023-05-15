@@ -4,12 +4,12 @@ import '@splidejs/react-splide/css';
 import Wrapper from "./Wrapper";
 import { useEffect, useState } from "react";
 
-const Slidepost = ({url,page}) => {
-
+const Slidepost = ({result}) => {
+  const[data]=result
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   
-  useEffect(() => {
-    // set initial value
+  useEffect(() =>{
+    //set initial value
     const mediaWatcher = window.matchMedia("(max-width: 650px)")
     //watch for updates
     function updateIsNarrowScreen(e){
@@ -17,16 +17,13 @@ const Slidepost = ({url,page}) => {
     }
     mediaWatcher.addEventListener('change', updateIsNarrowScreen)
 
-    // clean up after ourselves
+    //clean up after ourselves
     return function cleanup() {
       mediaWatcher.removeEventListener('change', updateIsNarrowScreen)
     }
   })
 
  
-
-    const[results,errorInfo]=useFetch(url,{page})
-    console.log(results)
     const slidOption={
         perPage:'5',
         pagination: false,
@@ -52,7 +49,7 @@ const Slidepost = ({url,page}) => {
     <div className="splidercontaienr">
         <Splide options={slidOption} >
             {
-              results.filter(item=>item.backdrop_path)
+              data?.filter(item=> item.backdrop_path)
               .map(newItem=>
                 <SplideSlide key={newItem.id} style={{fontSize:'16px'}}>
                 <img src={`https://image.tmdb.org/t/p/w300/${newItem.backdrop_path}`} alt="" />
