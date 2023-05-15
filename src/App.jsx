@@ -5,9 +5,17 @@ import Home from './pages/Home'
 import Header from './componets/Header'
 import Mobileslider from './componets/Mobileslider'
 import Footer from './componets/Footer'
+import { useEffect } from 'react'
 function App() {
+
+  useEffect(()=>{
+    document.addEventListener('scroll',(e)=>{
+    })
+  })
+
+
   return (
-    <div className="App">
+    <div className="App" >
       <Globlefile>
       <Header/>
       <Mobileslider/>

@@ -31,18 +31,7 @@ const Slidepost = ({result}) => {
         padding:'0',
         autoWidth: true,
         breakpoints:{
-          1230:{
-            perPage:4,
-          },
-          950:{
-            perPage: 4,
-          },
-          750:{
-            perPage: 3,
-          },
-          550:{
-            perPage: 2,
-          }
+
         }
     }
   return (

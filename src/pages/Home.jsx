@@ -18,7 +18,7 @@ function Home() {
   const errorIsIn=[mainSlideErrorInfo,fSmallSlideErrorInfo,sSmallSlideErrorInfo,cardDataErrorInfo,cardDataErrorInTow].some(item=> item? true : false)
 
 
-  console.log(errorIsIn)
+  console.log(mainSlideResults)
   return (
     <div className="home">
         {loading && <Loading/>}

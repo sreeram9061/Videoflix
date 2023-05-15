@@ -4,15 +4,25 @@ import { globalData } from "../context/Globlefile"
 import { AiFillStar,AiFillHeart } from "react-icons/ai";
 import { SlScreenDesktop } from "react-icons/sl";
 import { MdLocalMovies } from "react-icons/md";
-import Wrapper from "./Wrapper";
+
+
 
 function Mobileslider() {
-  let mobileNav=useRef()
-/*   useEffect(()=>{
-    !navStatusState ?
-    mobileNav.current.style.display='none':
-    mobileNav.current.style.display='flex'
-  },[navStatusState]) */
+
+  const mobileNav=useRef()
+
+  const handleScroll=(e)=>{
+    const scrol=document.body.scrollTop || document.documentElement.scrollTop
+
+    if(scrol+window.innerHeight>=document.documentElement.scrollHeight){
+      mobileNav.current.style.transform='translateY(200px)'
+    }else{
+      mobileNav.current.style.transform='translateY(0)'
+    }
+  }
+  useEffect(()=>{
+     window.addEventListener('scroll',handleScroll); 
+  },[])
 
   return (
     <div ref={mobileNav} className="mobileslider">
