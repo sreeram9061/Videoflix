@@ -15,7 +15,7 @@ function Mobileslider() {
     const scrol=document.body.scrollTop || document.documentElement.scrollTop
 
     if(scrol+window.innerHeight>=document.documentElement.scrollHeight){
-      mobileNav.current.style.transform='translateY(200px)'
+      mobileNav.current.style.transform='translateY(2000px)'
     }else{
       mobileNav.current.style.transform='translateY(0)'
     }

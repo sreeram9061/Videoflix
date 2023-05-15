@@ -22,7 +22,7 @@ function Home() {
   return (
     <div className="home">
         {loading && <Loading/>}
-        {errorIsIn && !loading && <Errorcom Error={mainSlideErrorInfo}/>}
+        {errorIsIn &&  <Errorcom Error={mainSlideErrorInfo}/>}
     {!errorIsIn && !loading && (
       <>
       <Slider {...{mainSlideResults}}/>
