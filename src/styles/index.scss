@@ -278,7 +278,7 @@ footer{
 /* error msg*/
 .errorcom{
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 67px);
     @include flexBox(row,center,center,0);
     background:$backgroundcolor;
     .containerError{
@@ -293,7 +293,7 @@ footer{
 }
 
 .loading{
-    height: 100vh;
+    height: calc(100vh - 67px);
     width: 100%;
     @include flexBox(column,center,center,0);
 }
