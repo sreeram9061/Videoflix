@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer>
         <h1>VIDEOFLIX</h1>
-        <p>&#169; VIDEOFLIX all rights resieved</p>
+        <p>&#169; 2023 VIDEOFLIX. All rights reserved</p>
     </footer>
   )
 }

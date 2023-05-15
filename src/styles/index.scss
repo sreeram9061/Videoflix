@@ -156,6 +156,7 @@
     width: 100%;
     background-color:$backgroundcolor;
     @include flexBox(row,center,center,16px);
+    box-shadow: -1px 6px 35px -4px rgba(0,0,0,0.75);
     display: none;
     padding: 7px 0;
     .nav-child{
@@ -293,6 +294,6 @@ footer{
 
 .loading{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     @include flexBox(column,center,center,0);
 }
