@@ -6,17 +6,13 @@ import { SlScreenDesktop } from "react-icons/sl";
 import { MdLocalMovies } from "react-icons/md";
 
 
-
 function Mobileslider() {
 
   const mobileNav=useRef()
 
   const handleScroll=(e)=>{
-    console.log(document.documentElement.scrollTop+window.innerHeight)    
- 
-    console.log(document.documentElement.scrollHeight)        
-
-    if(document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight-1){
+       
+    if(document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight-20){
       console.log('yes')
       mobileNav.current.style.transform='translateY(200px)'
     }else{

@@ -7,15 +7,15 @@ import { useFetch } from "../customHocks/useFetch"
 import Loading from "../componets/Loading"
 
 function Home() {
-  const[mainSlideResults,mainSlideErrorInfo,slideLoading]=useFetch('/movie/now_playing',{page:1})
-  const[fSmllSlideResults,fSmallSlideErrorInfo,fSmallloading]=useFetch('/tv/on_the_air',{page:1})
-  const[sSmllSlideResults,sSmallSlideErrorInfo,sSmallSlideloading]=useFetch('/tv/on_the_air',{page:2})
+  const [mainSlideResults,mainSlideErrorInfo,slideLoading]=useFetch('/movie/now_playing',{page:1})
+  const [fSmllSlideResults,fSmallSlideErrorInfo,fSmallloading]=useFetch('/tv/on_the_air',{page:1})
+  const [sSmllSlideResults,sSmallSlideErrorInfo,sSmallSlideloading]=useFetch('/tv/on_the_air',{page:2})
   const [cardDataOne,cardDataErrorInfo,cardloading]=useFetch('/movie/popular',{page:1})
   const [cardDataTow,cardDataErrorInTow,cardTowLoading]=useFetch('/tv/airing_today',{page:1})
 
   /* here cheking error || loading has or not */
   const loading=[slideLoading,fSmallloading,sSmallSlideloading,cardloading,cardTowLoading].some(item=> item==true)
-  const errorIsIn=[mainSlideErrorInfo,fSmallSlideErrorInfo,sSmallSlideErrorInfo,cardDataErrorInfo,cardDataErrorInTow].some(item=> item? true : false)
+  const errorIsIn=[mainSlideErrorInfo,fSmallSlideErrorInfo,sSmallSlideErrorInfo,cardDataErrorInfo,cardDataErrorInTow].every(item=> item? true : false)
 
 
   console.log(mainSlideResults)
@@ -27,7 +27,7 @@ function Home() {
       <>
       <Slider {...{mainSlideResults}}/>
       <div className="slidepost" >
-            <div className="container"  >
+            <div className="container">
               <Wrapper>
                  <h2>Best Tv show</h2>
               </Wrapper>
