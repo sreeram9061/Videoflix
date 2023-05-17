@@ -17,12 +17,13 @@ const Details = () => {
   let isProperty=stateDetails.hasOwnProperty('original_title')
   let data= isProperty ? useFetch(`/movie/${id}`)  : useFetch(`/tv/${id}`)
 
+  console.log(data)
   const [similarResult,sError,Sloading]= isProperty? 
   useFetch(`movie/${id}/similar`):
   useFetch(`/tv/${id}/similar`)
 
   const[results,errorInfo,loading]=data
-  const{backdrop_path,genres,overview,poster_path,release_date,vote_average}=results
+  const{backdrop_path,genres,overview,poster_path,release_date,runtime,spoken_languages,vote_average}=results
   
   console.log(results)
   const bgStyle={
@@ -51,9 +52,15 @@ const Details = () => {
                         <p>{results.overview}</p>
       
                         <div className="genres">
-                          <p>Genres : {genres?.map(({name})=>`${name} `)}</p>
+                          <p>Genres : {genres?.map(({name})=>`${name}  `)}</p>
                         </div>
-                        <p>Release Date : {release_date}</p>
+                        <p>Release Date : {release_date}</p> 
+
+                        <p>Runtime :{runtime}</p>
+                        <div className="genres">
+                        <p>Language : {spoken_languages?.map(({name})=> `${name}  `)}</p>
+                        </div>
+                        
       
                         <div className="addfavorite_rate">
                           <button><BiAddToQueue/>Add to list</button>
@@ -66,7 +73,7 @@ const Details = () => {
             </div>
             <div className="cards">
               <Wrapper>
-                <Card titile={'Similar Movie'} result={similarResult}/>
+                <Card titile={isProperty?'Similar Movies':'Similar Tv Shows'} result={similarResult}/>
               </Wrapper>
             </div>
           </div>

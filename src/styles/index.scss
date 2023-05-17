@@ -313,7 +313,8 @@ footer{
     .firstcontainer{
             box-shadow: inset 0px -171px 86px -16px #272530;
             isolation: isolate;
-            padding: 150px 0;
+            padding-top: 140px;
+            padding-bottom:30px ;
             position: relative;
             &::after{
                 content: '';
