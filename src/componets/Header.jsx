@@ -1,14 +1,16 @@
 import React from 'react'
 import { BsSearch } from "react-icons/bs";
 import Wrapper from './Wrapper';
-const Header = ()=> {
+import { useNavigate } from 'react-router-dom';
 
+const Header = ()=> {
+  let navigateHome=useNavigate()
   return (
     <div className='header'>
       <Wrapper>
         <div className="container">
         <div className="leftinner">
-            <h2>VIDEOFLIX</h2>
+            <h2 onClick={()=>navigateHome('/')} >VIDEOFLIX</h2>
             <h3>Tv Shows</h3>
             <h3>Movies</h3>
             <h3>Top Rating</h3>

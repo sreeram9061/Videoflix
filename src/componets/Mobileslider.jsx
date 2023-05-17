@@ -20,7 +20,7 @@ function Mobileslider() {
   }
   useEffect(()=>{
      window.addEventListener('scroll',handleScroll); 
-  },[])
+  })
 
   return (
     <div ref={mobileNav} className="mobileslider">

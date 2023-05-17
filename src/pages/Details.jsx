@@ -7,16 +7,20 @@ import { AiFillStar } from "react-icons/ai";
 import { BiAddToQueue } from "react-icons/bi";
 import Loading from "../componets/Loading"
 import Errorcom from "../componets/Errorcom"
-
+import Card from "../componets/Card"
 const Details = () => {
 
 
   const{id}=useParams()
   const [stateDetails,]=useContext(showDetails)
-
+  
   let isProperty=stateDetails.hasOwnProperty('original_title')
   let data= isProperty ? useFetch(`/movie/${id}`)  : useFetch(`/tv/${id}`)
-  
+
+  const [similarResult,sError,Sloading]= isProperty? 
+  useFetch(`movie/${id}/similar`):
+  useFetch(`/tv/${id}/similar`)
+
   const[results,errorInfo,loading]=data
   const{backdrop_path,genres,overview,poster_path,release_date,vote_average}=results
   
@@ -59,6 +63,11 @@ const Details = () => {
                     </div>
                   </Wrapper>
                  </div>
+            </div>
+            <div className="cards">
+              <Wrapper>
+                <Card titile={'Similar Movie'} result={similarResult}/>
+              </Wrapper>
             </div>
           </div>
           )

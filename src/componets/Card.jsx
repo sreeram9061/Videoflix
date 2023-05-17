@@ -1,5 +1,4 @@
 import { useContext, useState } from "react"
-import { useFetch } from "../customHocks/useFetch"
 import { useNavigate } from "react-router-dom"
 import { showDetails } from "../context/Globlefile"
 const Card = ({titile,result}) => {
@@ -11,7 +10,6 @@ const Card = ({titile,result}) => {
    const handleMovieDetails=(id,item)=>{
     navigate(`/Details/${id}`)
     setDetails(item)
-    console.log(item)
    }
 
   return (
@@ -19,7 +17,8 @@ const Card = ({titile,result}) => {
         <h2>{titile}</h2>
         <div className="cardcontainer">
           {
-            result.map((item,index)=>{
+            result.filter(item=> item.poster_path)
+            .map((item,index)=>{
               const{id,poster_path}=item
                if(index<12 || lengthState){
                  return <div onClick={()=>handleMovieDetails(id,item)} key={id} className="imgcontainer">
