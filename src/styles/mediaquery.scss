@@ -62,3 +62,21 @@
 
 }
 
+
+@media (max-width: 888px){
+    .itemDetails{
+        .firstcontainer{
+            .detailsContainer{
+                .detailsItems{
+                    grid-template-columns:1fr;
+                    .poster{
+                        justify-content: center;
+                        img{
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

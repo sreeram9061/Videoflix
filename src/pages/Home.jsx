@@ -17,8 +17,6 @@ function Home() {
   const loading=[slideLoading,fSmallloading,sSmallSlideloading,cardloading,cardTowLoading].some(item=> item==true)
   const errorIsIn=[mainSlideErrorInfo,fSmallSlideErrorInfo,sSmallSlideErrorInfo,cardDataErrorInfo,cardDataErrorInTow].every(item=> item? true : false)
 
-
-  console.log(mainSlideResults)
   return (
     <div className="home">
         {loading && <Loading/>}

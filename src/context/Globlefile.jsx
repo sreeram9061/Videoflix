@@ -1,15 +1,17 @@
 import { createContext, useState } from "react"
 export const globalData=createContext()
 export const errorStatus=createContext()
+export const showDetails=createContext()
+
 const Globlefile=({children})=>{
-    let [navStatusState,setNavStatus]=useState(false)
+    let [stateDetails,setDetails]=useState({})
     let [errorStatusState,setErrorStatus]=useState(null)
     return(
-        <globalData.Provider value={[navStatusState,setNavStatus]}>
         <errorStatus.Provider value={[errorStatusState,setErrorStatus]}>
-        {children}
+            <showDetails.Provider value={[stateDetails,setDetails]}>
+             {children}
+            </showDetails.Provider>
         </errorStatus.Provider>
-        </globalData.Provider>
     )
 }
 

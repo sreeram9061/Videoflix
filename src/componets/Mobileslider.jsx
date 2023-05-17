@@ -13,7 +13,6 @@ function Mobileslider() {
   const handleScroll=(e)=>{
        
     if(document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight-20){
-      console.log('yes')
       mobileNav.current.style.transform='translateY(200px)'
     }else{
       mobileNav.current.style.transform='translateY(0)'
@@ -39,7 +38,7 @@ function Mobileslider() {
       </div>
       <div className="fav nav-child">
         <AiFillHeart className="icons"/>
-      <p>Favorite</p>
+      <p>My List</p>
       </div>
     </div>
   )

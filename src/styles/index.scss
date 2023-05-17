@@ -293,8 +293,89 @@ footer{
 
 }
 
+/* loader */
 .loading{
     height: calc(100vh - 67px);
     width: 100%;
     @include flexBox(column,center,center,0);
+    background-color: $backgroundcolor;
 }
+
+
+.itemDetails{
+    background-color: $backgroundcolor;
+    min-height: 100vh;
+    .firstcontainer{
+            box-shadow: inset 0px -171px 86px -16px #272530;
+            isolation: isolate;
+            padding: 150px 0;
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: -1;
+                background-color:$backgroundcolor;
+                opacity: 0.7;   
+            }
+            .detailsContainer{
+                width: 100%;
+                .detailsItems{
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: 1fr 3fr;
+                    .poster{
+                        display: flex;
+                        img{
+                            width: 100%;
+                            border-radius: 10px;
+                        }
+                    }
+                    .description{
+                        font-size: 16px;
+                        @include flexBox(column,start,start,12px);
+                        h1{
+                            font-family: 'Nunito', sans-serif;
+                            font-family: 'Wix Madefor Display', sans-serif;
+                            color: white;
+                            font-weight: bold;
+                            font-size: 3.1em;
+                        }
+                        p{
+                            color: white;
+                            font-size: 1.1rem;
+                        }
+                        .genres{
+                            @include flexBox(row,none,none,17px);
+                            font-size: 1.1rem;
+                        }
+                        .addfavorite_rate{
+                            display: flex;
+                            button{
+                                background-color: transparent;
+                                @include flexBox(row,center,center,4px);
+                                padding: 9px 20px;
+                                cursor: pointer;
+                                border:1px solid $primerycolor;
+                                color: rgb(255, 0, 0);
+                                font-size: 1.2rem;
+                                &:hover{
+                                    border:1px solid rgb(197, 49, 49);
+                                    color: rgb(197, 49, 49);
+                                }
+                            }
+                            gap: 10px;
+                            p{
+                                @include flexBox(row,center,center,2px);
+                                .staricon{
+                                    color: gold;
+                                    font-size: 1.4rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+ 

@@ -32,7 +32,7 @@ const Slider = ({mainSlideResults}) => {
                         <h1 className='shadow' >{original_title}</h1>
                            <p className='shadow' >{overview}</p>
                            <div className="btnsRating">
-                            <button  className='btnone'>Add To Favorite</button>
+                            <button  className='btnone'>Add to My List</button>
                             <button className='btntow' >More</button>
                            <p className='reating shadow'><AiFillStar style={{color:'gold'}} />{vote_average}</p>
                            </div>

@@ -1,8 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import { BsSearch } from "react-icons/bs";
 import Wrapper from './Wrapper';
-import { RiMenu3Line } from "react-icons/ri";
-import { globalData } from '../context/Globlefile';
 const Header = ()=> {
 
   return (
@@ -17,7 +15,7 @@ const Header = ()=> {
         </div>
         <div className="rightinner">
           <BsSearch className='searchicon'/>
-          <h3>Favorite</h3>
+          <h3>My List</h3>
 
         </div>
         </div>

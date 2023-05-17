@@ -18,10 +18,12 @@ export const useFetch=(url,custoumParams={})=>{
    }
     
     useEffect(()=>{
+        
         const fetch= async ()=>{
             try {
                 const respons = await axios(option)
-                setResults(respons.data.results)
+                respons.data.results?
+                setResults(respons.data.results) : setResults(respons.data)
                 setLoading(false)
             }catch (error){
                 setError(error.message)
@@ -29,7 +31,7 @@ export const useFetch=(url,custoumParams={})=>{
             }
         }
         fetch()
-    },[page])
+    },[page,url])
 
     return [results,errorInfo,loading]
 }
