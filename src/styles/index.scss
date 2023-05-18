@@ -222,7 +222,6 @@
     @include flexBox(column ,none,none,10px);
     h2{
         font-size: clamp(1.5rem, 1.743vw + 0.066rem, 4.5rem);
-       /*  line-height: clamp(2.1rem, 6.097vw + 0.522rem, 5.4rem); */
         color: $primerycolor;
         font-family: sans-serif;
     }
@@ -287,6 +286,12 @@ footer{
     height: calc(100vh - 67px);
     @include flexBox(row,center,center,0);
     background:$backgroundcolor;
+    h3{
+        padding: 11px 0;
+        font-size: 23px;
+        font-family: sans-serif;
+        color: red;
+    }
     .containerError{
         width: 100%;
         color: white;
@@ -306,7 +311,6 @@ footer{
     background-color: $backgroundcolor;
 }
 
-
 .itemDetails{
     background-color: $backgroundcolor;
     min-height: 100vh;
@@ -314,7 +318,7 @@ footer{
             box-shadow: inset 0px -171px 86px -16px #272530;
             isolation: isolate;
             padding-top: 140px;
-            padding-bottom:30px ;
+            padding-bottom:30px;
             position: relative;
             &::after{
                 content: '';
@@ -352,7 +356,7 @@ footer{
                             font-size: 1.1rem;
                         }
                         .genres{
-                            @include flexBox(row,none,none,17px);
+                            @include flexBox(row,none,none,0);
                             font-size: 1.1rem;
                         }
                         .addfavorite_rate{
@@ -385,3 +389,63 @@ footer{
         }
     }
  
+
+.singlecardspag{
+    background-color: $backgroundcolor;
+    padding-top: 80px;
+    padding-bottom: 20px;
+    box-shadow:inset 0px -15px 12px -15px #111;    
+    min-height: 100vh;
+    .container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 25px;
+    }
+}
+
+.infocard{
+    cursor: pointer;
+    .image{
+        position: relative;
+        overflow: hidden;
+        
+        img{
+            width: 100%;
+        }
+        p{
+            @include flexBox(row,center,center,0);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            z-index: 1;
+            transform: translateY(100px);
+            transition: all ease-in-out .5s;
+            .icon{
+                color: gold;
+                font-size: 17px;
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: -1;
+                background-color:$backgroundcolor;
+                opacity: 0.5;   
+            }
+        }
+
+        &:hover p{
+            transform: translateY(0);
+        }
+    }
+    .cardtitle{
+        @include flexBox(column,start,space-between,0);
+        h3{
+            color: white;
+           
+        }
+    }
+}

@@ -66,11 +66,15 @@
 @media (max-width: 888px){
     .itemDetails{
         .firstcontainer{
+            padding-top: 51px;
             .detailsContainer{
                 .detailsItems{
                     grid-template-columns:1fr;
                     .poster{
                         justify-content: center;
+                        .description{
+                            font-size: 12px;
+                        }
                         img{
                             width: 60%;
                         }

@@ -52,16 +52,15 @@ const Details = () => {
                         <p>{results.overview}</p>
       
                         <div className="genres">
-                          <p>Genres : {genres?.map(({name})=>`${name}  `)}</p>
+                          <p>Genres : {genres?.map(({name},ind)=> genres.length-1!=ind? `${name}, ` :`${name}` )}</p>
                         </div>
                         <p>Release Date : {release_date}</p> 
 
                         <p>Runtime :{runtime}</p>
                         <div className="genres">
-                        <p>Language : {spoken_languages?.map(({name})=> `${name}  `)}</p>
+                        <p>Language : {spoken_languages?.map(({name},ind)=> spoken_languages.length-1!=ind? `${name}, ` :`${name}`)}</p>
                         </div>
-                        
-      
+  
                         <div className="addfavorite_rate">
                           <button><BiAddToQueue/>Add to list</button>
                           <p><AiFillStar className="staricon"/>{vote_average}</p>
