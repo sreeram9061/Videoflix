@@ -6,23 +6,6 @@ import { useEffect, useState } from "react";
 
 const Slidepost = ({result}) => {
   const[data]=result
-  const [isNarrowScreen, setIsNarrowScreen] = useState(false);
-  
-  useEffect(() =>{
-    //set initial value
-    const mediaWatcher = window.matchMedia("(max-width: 650px)")
-    //watch for updates
-    function updateIsNarrowScreen(e){
-      setIsNarrowScreen(e.matches);
-    }
-    mediaWatcher.addEventListener('change', updateIsNarrowScreen)
-
-    //clean up after ourselves
-    return function cleanup() {
-      mediaWatcher.removeEventListener('change', updateIsNarrowScreen)
-    }
-  })
-
  
     const slidOption={
         perPage:'5',

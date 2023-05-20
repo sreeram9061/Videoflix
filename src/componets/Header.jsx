@@ -18,7 +18,7 @@ const Header = ()=> {
     navigate('/Movies')
     setTvAndMovie('Movie')
   }
-  return (
+  return(
     <div className='header'>
       <Wrapper>
         <div className="container">

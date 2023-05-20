@@ -8,6 +8,8 @@ import Footer from './componets/Footer'
 import MovieDetails from './pages/Details'
 import { Route, Routes } from "react-router-dom"
 import Singlecardpag from './pages/Singlecardpag'
+import Reachtopbutton from './componets/Reachtopbutton'
+
 function App() {
  
   return (
@@ -23,6 +25,7 @@ function App() {
          </Routes>
       </Globlefile>
       <Footer/>
+      <Reachtopbutton/>
     </div>
   )
 }

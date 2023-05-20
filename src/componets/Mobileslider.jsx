@@ -19,9 +19,10 @@ function Mobileslider() {
       mobileNav.current.style.transform= 'translateY(0)'
     }
   }
+  
   useEffect(()=>{
      window.addEventListener('scroll',handleScroll); 
-  })
+  },[])
 
   const [,setTvAndMovie]=useContext(TvAndMovieStatus)
 

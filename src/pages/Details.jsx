@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react"
+import { useContext, useEffect, useMemo } from "react"
 import { showDetails } from "../context/Globlefile"
 import { useParams } from "react-router-dom"
 import Wrapper from "../componets/Wrapper"
@@ -13,11 +13,15 @@ const Details = () => {
 
   const{id}=useParams()
   const [stateDetails,]=useContext(showDetails)
-  
-  let isProperty=stateDetails.hasOwnProperty('original_title')
-  let data= isProperty ? useFetch(`/movie/${id}`)  : useFetch(`/tv/${id}`)
 
-  console.log(data)
+  let isProperty=stateDetails.hasOwnProperty('original_title')
+  let data= isProperty ? useFetch(`/movie/${id}`) : useFetch(`/tv/${id}`)
+
+  useEffect(()=>{
+    document.body.scrollTop=0;
+    document.documentElement.scrollTop = 0;
+  },[id])
+
   const [similarResult,sError,Sloading]= isProperty? 
   useFetch(`movie/${id}/similar`):
   useFetch(`/tv/${id}/similar`)
@@ -49,7 +53,7 @@ const Details = () => {
                   <Wrapper>
                   <div className="detailsItems">
                       <div className="poster">
-                       <img   src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
+                       <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
                       </div>
                       <div className="description">
                         <h1>{isProperty ? results.original_title : results.original_name}</h1>

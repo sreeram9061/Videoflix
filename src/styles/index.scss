@@ -485,3 +485,46 @@ footer{
 
       }
 }
+
+.topbtn{
+    position: fixed;
+    bottom: 10px;
+    display: none;
+    width: 100%;
+    pointer-events: none;
+    .container{
+        width: 100%;
+        max-width: 1280px;
+        padding: 0px 20px;
+        margin: 0px auto;
+        @include flexBox(row,center,end,5px);
+        button{
+            pointer-events: visible;
+            box-shadow: -1px 6px 35px -4px rgba(0,0,0,0.75);
+            width: 45px;
+            height: 45px;
+            border-radius: 50px;
+            background-color: $backgroundcolor;
+            color: $primerycolor;
+            font-size: 18px;
+            border: none;
+            @include flexBox(row,center,center,0);
+            cursor: pointer;
+    
+            .icons{
+                animation: ani .8s linear infinite alternate-reverse;
+            }
+    
+            @keyframes ani{
+                from {
+                    transform: translateY(-3px);
+                  }
+                  to{
+                    transform: translateY(3px);
+                  }
+                
+            }
+        }
+    }
+}
+
