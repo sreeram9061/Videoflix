@@ -54,18 +54,29 @@
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         }
     }
+    .singlecardspag{
+        .container{
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-gap: 10px;
+
+            .infocard{
+                .cardtitle{
+                    h3{
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
 
     footer{
         font-size: 12px;
-        
-
     }
 
 }
 
 
 @media (max-width: 888px){
-
     .itemDetails{
         .firstcontainer{
             padding-top: 51px;

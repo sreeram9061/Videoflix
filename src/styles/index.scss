@@ -150,10 +150,11 @@
 
 /* mobileslider*/
 .mobileslider{
+    box-shadow: 0 10px 34px black;
     position: fixed;
     transition: ease .5s;
     bottom: 0;
-    z-index: 3;
+    z-index: 999;
     width: 100%;
     background-color:$backgroundcolor;
     @include flexBox(row,center,center,16px);
@@ -265,7 +266,6 @@
 footer{
 
     @include flexBox(column,center,center,5px);
-    box-shadow: 0 10px 34px black;
     font-size: 16px;
     background-color: $backgroundcolor;
     padding: 2em 0;
