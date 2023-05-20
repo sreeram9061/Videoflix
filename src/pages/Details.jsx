@@ -34,7 +34,11 @@ const Details = () => {
   }
   return (
     <>
-        {loading && <Loading/>}
+        {loading && (
+          <div className="loaderContainer">
+            <Loading/>
+          </div>
+        )}
         {errorInfo && <Errorcom/>}
         {
           !loading && !errorInfo && (

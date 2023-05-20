@@ -5,6 +5,7 @@
 @media (max-width: 940px){
 
     .header{
+       border-bottom: 1px solid rgb(77, 75, 75);
         position: relative;
         background-color: $backgroundcolor;
         .container{
@@ -64,6 +65,7 @@
 
 
 @media (max-width: 888px){
+
     .itemDetails{
         .firstcontainer{
             padding-top: 51px;
@@ -82,5 +84,9 @@
                 }
             }
         }
+    }
+
+    .singlecardspag{
+        padding-top: 0;
     }
 }
