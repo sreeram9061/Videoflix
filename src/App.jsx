@@ -9,18 +9,17 @@ import MovieDetails from './pages/Details'
 import { Route, Routes } from "react-router-dom"
 import Singlecardpag from './pages/Singlecardpag'
 function App() {
-
  
-  
   return (
     <div className="App" >
       <Globlefile>
       <Header/>
-     {/*  <Mobileslider/> */}
+     <Mobileslider/>
          <Routes>
            <Route path="/" element={<Home />} />
            <Route path="/Details/:id" element={<MovieDetails/>}/>
-           <Route path="/Movies" element={<Singlecardpag/>}/>
+           <Route path="/Movies" element={<Singlecardpag title={'Movies'}/>}/>
+           <Route path="/TvShows" element={<Singlecardpag title={'Tv shows'}/>}/>
          </Routes>
       </Globlefile>
       <Footer/>

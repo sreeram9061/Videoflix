@@ -1,8 +1,11 @@
 
 const Loading = () => {
   return (
-    <div className="loading">
-      <h1>loading</h1>
+    <div className="loader-box">
+      <div className="spinner-box">
+         <p>Loading...</p>
+        <div className="three-quarter-spinner"></div>
+       </div>
     </div>
   )
 }

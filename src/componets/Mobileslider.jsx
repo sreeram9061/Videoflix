@@ -4,18 +4,20 @@ import { globalData } from "../context/Globlefile"
 import { AiFillStar,AiFillHeart } from "react-icons/ai";
 import { SlScreenDesktop } from "react-icons/sl";
 import { MdLocalMovies } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
 
 
 function Mobileslider() {
-
+  const navigate=useNavigate()
   const mobileNav=useRef()
 
   const handleScroll=(e)=>{
        
     if(document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight-20){
-      mobileNav.current.style.transform='translateY(200px)'
+      mobileNav.current.style.display='none'
     }else{
-      mobileNav.current.style.transform='translateY(0)'
+      mobileNav.current.style.display='flex'
     }
   }
   useEffect(()=>{
@@ -24,11 +26,11 @@ function Mobileslider() {
 
   return (
     <div ref={mobileNav} className="mobileslider">
-      <div className="tv nav-child">
-        <SlScreenDesktop className="icons"/>
+      <div onClick={()=>navigate('/Movies')} className="tv nav-child">
+       <SlScreenDesktop className="icons"/>
       <p>Tv shows</p>
       </div>
-      <div className="movie nav-child">
+      <div onClick={()=>navigate('/Movies')} className="movie nav-child">
         <MdLocalMovies className="icons"/>
       <p>Movies</p>
       </div>

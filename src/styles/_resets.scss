@@ -5,6 +5,14 @@
     font-family: 'Nunito', sans-serif;
 }
 
+@import 'colors';
+
 html {
     scroll-behavior: smooth;
-  }
+}
+
+.App{
+    min-height: 100vh;
+    background-color: $backgroundcolor;
+}
+
