@@ -16,7 +16,10 @@ function App() {
     <div className="App" >
       <Globlefile>
       <Header/>
-     <Mobileslider/>
+      <div className="loackeditems">
+      <Reachtopbutton/>
+        <Mobileslider/>
+      </div>
          <Routes>
            <Route path="/" element={<Home />} />
            <Route path="/Details/:id" element={<MovieDetails/>}/>
@@ -25,7 +28,6 @@ function App() {
          </Routes>
       </Globlefile>
       <Footer/>
-      <Reachtopbutton/>
     </div>
   )
 }
