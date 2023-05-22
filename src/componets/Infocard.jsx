@@ -14,7 +14,7 @@ const Infocard = ({data}) => {
      }
 
   return (
-    <div className="infocard" onClick={()=>handleMovieDetails(data.id,data)} key={data.id} >
+    <div key={data.id} className="infocard" onClick={()=>handleMovieDetails(data.id,data)} >
         <div className="image" >
             <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
             <p>Rating : {vote_average}<AiFillStar className="icon"/></p>

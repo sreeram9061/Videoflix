@@ -16,11 +16,10 @@ function Home() {
   /* here cheking error || loading has or not */
   const loading=[slideLoading,fSmallloading,sSmallSlideloading,cardloading,cardTowLoading].some(item=> item==true)
   const errorIsIn=[mainSlideErrorInfo,fSmallSlideErrorInfo,sSmallSlideErrorInfo,cardDataErrorInfo,cardDataErrorInTow].every(item=> item? true : false)
-
   return (
     <div className="home">
         {loading && <Loading/>}
-        {errorIsIn &&  <Errorcom Error={mainSlideErrorInfo}/>}
+        {errorIsIn && <Errorcom Error={mainSlideErrorInfo} />}
     {!errorIsIn && !loading && (
       <>
       <Slider {...{mainSlideResults}}/>
@@ -30,11 +29,11 @@ function Home() {
                  <h2>Best Tv show</h2>
               </Wrapper>
                <Slidepost {...{result:[fSmllSlideResults]}}/>
-               <Slidepost  {...{result:[sSmllSlideResults]}}/>
+               <Slidepost {...{result:[sSmllSlideResults]}}/>
            </div>
            <Wrapper>
-             <Card titile={'Now Playing Movies'} result={cardDataOne}/>
-             <Card titile={'Tv show '} result={cardDataTow}/>
+           <Card titile={'Now Playing Movies'} result={cardDataOne} />
+             <Card titile={'Tv show'} result={cardDataTow} />
            </Wrapper>
       </div>
       </>

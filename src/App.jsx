@@ -9,6 +9,7 @@ import MovieDetails from './pages/Details'
 import { Route, Routes } from "react-router-dom"
 import Singlecardpag from './pages/Singlecardpag'
 import Reachtopbutton from './componets/Reachtopbutton'
+import Toprated from './pages/Toprated'
 
 function App() {
  
@@ -25,6 +26,7 @@ function App() {
            <Route path="/Details/:id" element={<MovieDetails/>}/>
            <Route path="/Movies" element={<Singlecardpag title={'Movies'}/>}/>
            <Route path="/TvShows" element={<Singlecardpag title={'Tv shows'}/>}/>
+           <Route path="/TopRating" element={<Toprated/>}/>
          </Routes>
       </Globlefile>
       <Footer/>

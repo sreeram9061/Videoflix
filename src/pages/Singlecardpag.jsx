@@ -13,17 +13,22 @@ const Singlecardpag = ({title}) => {
     const [TvAndMovieState,]=useContext(TvAndMovieStatus)
     const [pageLoading,setPageLoading]=useState(true)
 
-    const [result,error,loading]=title=='Tv shows'?
+
+
+
+    let [result,error,loading]= title=='Tv shows'?
     useFetch('/tv/on_the_air',{page}):
     useFetch('/movie/popular',{page})
 
-    console.log({result},{resultState})
+
+
     const handleCheck =()=>{
         if(window.innerHeight+document.documentElement.scrollTop+1 >= document.documentElement.scrollHeight){
           setPage((pre)=>pre+1)
           setPageLoading(true)
         }
     }
+    console.log("from componets=>",result,resultState)
 
     useEffect(()=>{
       setResult([])
@@ -32,13 +37,14 @@ const Singlecardpag = ({title}) => {
       document.documentElement.scrollTop = 0;
     },[TvAndMovieState])
 
-    useEffect(()=>{
+    useMemo(()=>{
       if(title=='Tv shows'){
-        result.some(item=> item.hasOwnProperty('name') &&
-         setResult(pre=> deleteDuplicate([ ...pre, ...result])) )
+        result.some(item=> item.hasOwnProperty('name')) &&
+        setResult(pre=> [ ...pre, ...result]) 
+
       }else{
-        result.some(item=> item.hasOwnProperty('title') &&
-        setResult(pre=> deleteDuplicate([ ...pre, ...result])) )
+        result.some(item=> item.hasOwnProperty('title') )&&
+        setResult(pre=> [ ...pre, ...result]) 
       }
       setPageLoading(false)
     },[result])
@@ -46,7 +52,11 @@ const Singlecardpag = ({title}) => {
 
     useEffect(()=>{
       window.addEventListener('scroll',handleCheck)
-    },[])
+
+      return()=>{
+        window.removeEventListener('scroll',handleCheck)
+      }
+    })
 
   return (
     <div className="singlecardspag">

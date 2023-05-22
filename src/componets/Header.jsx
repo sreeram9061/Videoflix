@@ -18,6 +18,10 @@ const Header = ()=> {
     navigate('/Movies')
     setTvAndMovie('Movie')
   }
+
+  const handleRating=()=>{
+    navigate('/TopRating')
+  }
   return(
     <div className='header'>
       <Wrapper>
@@ -26,12 +30,12 @@ const Header = ()=> {
             <h2 onClick={()=>navigate('/')} >VIDEOFLIX</h2>
             <h3 onClick={handleTvShow}>Tv Shows</h3>
             <h3 onClick={handleMovie} >Movies</h3>
-            <h3>Top Rating</h3>
+            <h3 onClick={handleRating} >Top Rating</h3>
         </div>
         <div className="rightinner">
           <BsSearch className='searchicon'/>
           <h3>My List</h3>
-
+  
         </div>
         </div>
       </Wrapper>

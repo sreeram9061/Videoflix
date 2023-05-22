@@ -25,11 +25,9 @@ const Slider = ({mainSlideResults}) => {
 
       const navigate = useNavigate()
       const [,setDetails]=useContext(showDetails)
-
       const handleMovieDetails=(id,item)=>{
-        
         navigate(`/Details/${id}`)
-       setDetails(item)
+        setDetails(item)
       }
 
   return (

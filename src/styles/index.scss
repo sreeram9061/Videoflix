@@ -493,7 +493,7 @@ footer{
 
 /* ReachTop */
 .topbtn{
-    padding: 5px 0;
+    padding: 8px 0;
     display: none;
     transition: ease .5s;
     width: 100%;
@@ -533,3 +533,107 @@ footer{
     }
 }
 
+.toprated{
+    min-height:100vh;
+    padding-top:87px;
+    @include flexBox(column,none,none,0);
+    .gridCont{
+       
+        .Navigateitems{
+            padding: 10px 0;
+            @include flexBox(row,center,start,0);
+            .title{
+                border-radius: 50px;
+                background-color: #1a1920;
+                .btnTitle{
+                    color: white;
+                    font-size:16px;
+                    padding: 7px 15px;
+                    border-radius: 50px;
+
+                }
+                
+                cursor: pointer;
+                @include flexBox(row,center,none,4px);
+                padding: 2px 2px;
+                position: relative;
+                .Navigator{
+                    position: absolute;
+                    pointer-events: none;
+                    height: 43px;
+                    width: auto;
+                    padding: 0 10px;
+                    border-radius: 50px;
+                    border: none;
+                    background-color: $primerycolor;
+                    .btnTitle{
+                        font-size:16px;
+                        color: white;
+                    }
+                }
+            }
+        }
+        .container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 10px;
+            
+        }
+        .pagenation{
+            @include flexBox(row,center,space-evenly,0);
+            padding: 20px 0;
+            p{
+                color: white;
+            }
+            button{
+                width: 50px;
+                height: 30px;
+                border-radius:5px;
+                background-color: $primerycolor;
+                color: white;
+                border: none;
+                cursor: pointer;
+                &:hover{
+
+                }
+            }
+
+        }
+    }
+}
+
+.backdrop{
+    @include flexBox(column,start,start,5px);
+    padding-bottom: 14px;
+    cursor: pointer;
+    .image{
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        border-radius: 4px;
+        &:hover img{
+            transform: scale(1.1);
+            opacity: .5;
+        }
+        img{
+            width: 100%;
+            transition: all ease .5s;
+        }
+        p{
+            position: absolute;
+            bottom: 0;
+            font-size:20px;
+            color: white;
+            font-weight: bold;
+            padding: 0 0 10px 5px;
+        }
+    }
+    .textsection{
+        p{
+            @include flexBox(row,center,center,5px);
+            color: white;
+
+        }
+    }
+
+}

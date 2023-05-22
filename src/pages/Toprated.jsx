@@ -1,0 +1,47 @@
+import { useState } from "react"
+import Backdropcard from "../componets/Backdropcard"
+import Wrapper from "../componets/Wrapper"
+import { useFetch } from "../customHocks/useFetch"
+const Toprated = () => {
+  const [itemNavigate,setItemNavigate]=useState(true)
+  const [page,setPage]=useState(1)
+    const[movieData,movieError,movieLoader]= itemNavigate ? 
+    useFetch('/movie/top_rated',{page}) :
+    useFetch('/tv/top_rated',{page})
+
+    const handleNavigateMovieTv=()=>{
+      setItemNavigate(pre=> !pre)
+      setPage(1)
+    }
+   
+  return (
+    <div className="toprated">
+        <Wrapper>
+          <div className="moviecontainer gridCont">
+
+             <div className="Navigateitems">
+              <div onClick={handleNavigateMovieTv} className="title">
+                <h3 style={itemNavigate ?  {backgroundColor:'rgb(221, 28, 28)'} : null} className="btnTitle " >Movie</h3>
+                <h3 style={!itemNavigate ?  {backgroundColor:'rgb(221, 28, 28)'} : null}  className="btnTitle " >Tv Shows</h3>
+              </div>
+             </div>
+
+            <div className="container">
+            {
+              movieData.map(item=>
+                  <Backdropcard item={item} />
+              )
+            }
+            </div>
+            <div className="pagenation">
+              <button disabled={page <= 1}   onClick={()=>setPage(pre=> pre-1)}>Pre</button>
+              <p>{page}</p>
+              <button  onClick={()=>setPage(pre=> pre+1)} >Next</button>
+            </div>
+          </div>
+        </Wrapper>
+    </div>
+  )
+}
+
+export default Toprated

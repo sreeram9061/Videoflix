@@ -31,6 +31,7 @@ export const useFetch=(url,custoumParams={})=>{
             }
         }
         fetch()
+
     },[page,url])
 
     return [results,errorInfo,loading]
