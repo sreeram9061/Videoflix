@@ -17,7 +17,7 @@ const Details = () => {
   let isProperty=stateDetails.hasOwnProperty('original_title')
   let data= isProperty ? useFetch(`/movie/${id}`) : useFetch(`/tv/${id}`)
 
-  useEffect(()=>{
+  useMemo(()=>{
     document.body.scrollTop=0;
     document.documentElement.scrollTop = 0;
   },[id])

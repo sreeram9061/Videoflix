@@ -49,6 +49,7 @@ function Mobileslider() {
         <MdLocalMovies className="icons"/>
       <p>Movies</p>
       </div>
+
       <div onClick={()=>navigate('/TopRating')} className="top-r nav-child">
         <AiFillStar className="icons"/>
       <p>Top rating</p>

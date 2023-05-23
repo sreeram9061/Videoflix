@@ -13,14 +13,9 @@ const Singlecardpag = ({title}) => {
     const [TvAndMovieState,]=useContext(TvAndMovieStatus)
     const [pageLoading,setPageLoading]=useState(true)
 
-
-
-
     let [result,error,loading]= title=='Tv shows'?
     useFetch('/tv/on_the_air',{page}):
     useFetch('/movie/popular',{page})
-
-
 
     const handleCheck =()=>{
         if(window.innerHeight+document.documentElement.scrollTop+1 >= document.documentElement.scrollHeight){
@@ -28,9 +23,8 @@ const Singlecardpag = ({title}) => {
           setPageLoading(true)
         }
     }
-    console.log("from componets=>",result,resultState)
 
-    useEffect(()=>{
+    useMemo(()=>{
       setResult([])
       setPage(1)
       document.body.scrollTop=0;
@@ -63,7 +57,7 @@ const Singlecardpag = ({title}) => {
         <Wrapper>
             <h3>{title}</h3>
             <div className="container">
-                {resultState?.map(item=> <Infocard data={item}/>)}
+                {resultState?.map((item,ind)=> <Infocard key={item.id+ind} data={item}/>)}
             </div>
             {pageLoading && <Loading/>}
         </Wrapper>

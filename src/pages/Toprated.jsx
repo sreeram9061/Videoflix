@@ -1,10 +1,18 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import Backdropcard from "../componets/Backdropcard"
 import Wrapper from "../componets/Wrapper"
 import { useFetch } from "../customHocks/useFetch"
 const Toprated = () => {
+
+
   const [itemNavigate,setItemNavigate]=useState(true)
   const [page,setPage]=useState(1)
+
+  useMemo(()=>{
+    document.body.scrollTop=0;
+    document.documentElement.scrollTop = 0;
+  },[page])
+  
     const[movieData,movieError,movieLoader]= itemNavigate ? 
     useFetch('/movie/top_rated',{page}) :
     useFetch('/tv/top_rated',{page})
@@ -34,7 +42,7 @@ const Toprated = () => {
             }
             </div>
             <div className="pagenation">
-              <button disabled={page <= 1}   onClick={()=>setPage(pre=> pre-1)}>Pre</button>
+              <button disabled={page <= 1} onClick={()=>setPage(pre=> pre-1)}>Pre</button>
               <p>{page}</p>
               <button  onClick={()=>setPage(pre=> pre+1)} >Next</button>
             </div>

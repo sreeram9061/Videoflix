@@ -3,8 +3,10 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import Wrapper from "./Wrapper";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Slidepost = ({result}) => {
+  const navaigate=useNavigate()
   const[data]=result
  
     const slidOption={
@@ -24,7 +26,7 @@ const Slidepost = ({result}) => {
               data?.filter(item=> item.backdrop_path)
               .map(newItem=>
                 <SplideSlide key={newItem.id} style={{fontSize:'16px'}}>
-                <img src={`https://image.tmdb.org/t/p/w300/${newItem.backdrop_path}`} alt="" />
+                <img onClick={()=>navaigate(`/Details/${newItem.id}`)} src={`https://image.tmdb.org/t/p/w300/${newItem.backdrop_path}`} alt="" />
                 <h1>{newItem.original_name}</h1>
                 </SplideSlide>
                 )
