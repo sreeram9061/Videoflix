@@ -1,16 +1,24 @@
 
-import { useContext, useEffect, useRef } from "react"
+import { useContext, useEffect, useMemo, useRef } from "react"
 import { TvAndMovieStatus,} from "../context/Globlefile"
 import { AiFillStar,AiFillHeart,AiFillHome } from "react-icons/ai";
 import { SlScreenDesktop } from "react-icons/sl";
 import { MdLocalMovies } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import Toprated from "../pages/Toprated";
 
 
 
 function Mobileslider() {
   const navigate=useNavigate()
   const mobileNav=useRef()
+  const home=useRef()
+  const tvshow=useRef()
+  const movie=useRef()
+  const topr=useRef()
+  const addTolist=useRef()
+
+  const iconsTextLogo=[home,tvshow,movie,topr,addTolist]
 
   const handleScroll=()=>{
     if(document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight-140){
@@ -19,42 +27,50 @@ function Mobileslider() {
       mobileNav.current.style.transform= 'translateY(0)'
     }
   }
-  
+  const initial=()=>{
+    [...home.current.children].map(iner=> {iner.style.color='rgb(221, 28, 28)'})
+  }
   useEffect(()=>{
+    initial()
      window.addEventListener('scroll',handleScroll); 
   },[])
 
   const [,setTvAndMovie]=useContext(TvAndMovieStatus)
 
-  const handleTvShow=()=>{
-    navigate('/TvShows')
-    setTvAndMovie('Tv')
-  }
-  const handleMovie=()=>{
-    navigate('/Movies')
-    setTvAndMovie('Movie')
+  const naviGatePage=(path,ref,type)=>{
+    navigate(path)
+    type && setTvAndMovie(type)
+    iconsTextLogo.map(item=>{
+      item==ref ?
+      [...item.current.children].map(iner=> iner.style.color='rgb(221, 28, 28)'):
+      [...item.current.children].map(iner=> iner.style.color='white')
+    })
   }
 
   return (
     <div ref={mobileNav} className="mobileslider">
-      <div onClick={()=>navigate('/')} className="ho nav-child">
+
+      <div ref={home} onClick={()=>naviGatePage('/',home)} className="ho nav-child">
        <AiFillHome className="icons"/>
       <p>Home</p>
       </div>
-      <div onClick={handleTvShow} className="tv nav-child">
+
+      <div ref={tvshow} onClick={()=>naviGatePage('/TvShows',tvshow,'Tv')} className="tv nav-child">
        <SlScreenDesktop className="icons"/>
       <p>Tv shows</p>
       </div>
-      <div onClick={handleMovie} className="movie nav-child">
+
+      <div ref={movie} onClick={()=>naviGatePage('/Movies',movie,'Movie')} className="movie nav-child">
         <MdLocalMovies className="icons"/>
       <p>Movies</p>
       </div>
 
-      <div onClick={()=>navigate('/TopRating')} className="top-r nav-child">
+      <div ref={topr} onClick={()=>naviGatePage('/TopRating',topr)} className="top-r nav-child">
         <AiFillStar className="icons"/>
       <p>Top rating</p>
       </div>
-      <div className="fav nav-child">
+
+      <div ref={addTolist} className="fav nav-child">
         <AiFillHeart className="icons"/>
       <p>My List</p>
       </div>

@@ -2,7 +2,6 @@ import Wrapper from "../componets/Wrapper"
 import { useFetch } from "../customHocks/useFetch"
 import Infocard from "../componets/Infocard"
 import {  useContext, useEffect,useMemo,useState } from "react"
-import { deleteDuplicate } from "../customHocks/deleteDuplicate"
 import { TvAndMovieStatus } from "../context/Globlefile"
 import Loading from "../componets/Loading"
 

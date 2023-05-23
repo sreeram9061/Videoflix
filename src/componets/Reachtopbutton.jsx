@@ -18,10 +18,17 @@ const Reachtopbutton = () => {
     document.documentElement.scrollTop = 0;        
   }
 
+
+
   useEffect(()=>{
     window.addEventListener('scroll',()=>{
       handleScroll()
-    });
+    })
+
+/*   window.addEventListener('resize',()=>{
+       if(window.innerWidth<940){
+       }
+    }) */
   })  
   return (
     <div ref={topButton}  style={ isScreanOnTop ? {display:'none'} : {display:'flex'}} className="topbtn">
