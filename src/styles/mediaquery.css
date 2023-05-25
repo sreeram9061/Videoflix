@@ -9,8 +9,14 @@ html {
   scroll-behavior: smooth;
 }
 
+.App {
+  min-height: 100vh;
+  background-color: #272530;
+}
+
 @media (max-width: 940px) {
   .header {
+    border-bottom: 1px solid rgb(77, 75, 75);
     position: relative;
     background-color: #272530;
   }
@@ -46,8 +52,21 @@ html {
   .cardsection .cardcontainer {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
+  .singlecardspag .container {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 10px;
+  }
+  .singlecardspag .container .infocard .cardtitle h3 {
+    font-size: 15px;
+  }
+  .infocard .image p {
+    padding: 5px;
+  }
   footer {
     font-size: 12px;
+  }
+  .toprated {
+    padding: 0;
   }
 }
 @media (max-width: 888px) {
@@ -65,5 +84,8 @@ html {
   }
   .itemDetails .firstcontainer .detailsContainer .detailsItems .poster img {
     width: 60%;
+  }
+  .singlecardspag {
+    padding-top: 0;
   }
 }/*# sourceMappingURL=mediaquery.css.map */

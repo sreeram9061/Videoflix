@@ -70,7 +70,7 @@ function Mobileslider() {
       <p>Top rating</p>
       </div>
 
-      <div ref={addTolist} className="fav nav-child">
+      <div ref={addTolist} onClick={()=>naviGatePage('/Mylist',addTolist)} className="fav nav-child">
         <AiFillHeart className="icons"/>
       <p>My List</p>
       </div>

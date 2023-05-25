@@ -9,6 +9,11 @@ html {
   scroll-behavior: smooth;
 }
 
+.App {
+  min-height: 100vh;
+  background-color: #272530;
+}
+
 .wrapper {
   width: 100%;
   max-width: 1280px;
@@ -165,12 +170,24 @@ html {
   opacity: 1;
 }
 
+.loackeditems {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 0;
+}
+
 /* mobileslider*/
 .mobileslider {
-  position: fixed;
+  pointer-events: visible;
+  box-shadow: 0 10px 34px black;
   transition: ease 0.5s;
-  bottom: 0;
-  z-index: 3;
   width: 100%;
   background-color: #272530;
   display: flex;
@@ -204,7 +221,6 @@ html {
 }
 .slidepost h2 {
   font-size: clamp(1.5rem, 1.743vw + 0.066rem, 4.5rem);
-  /*  line-height: clamp(2.1rem, 6.097vw + 0.522rem, 5.4rem); */
   color: rgb(221, 28, 28);
   font-family: sans-serif;
 }
@@ -238,12 +254,26 @@ html {
   align-items: none;
   justify-content: none;
   gap: 10px;
-  padding-top: 30px;
+  padding: 30px 0;
 }
 .cardsection h2 {
   font-size: clamp(1.5rem, 1.743vw + 0.066rem, 4.5rem);
   color: rgb(221, 28, 28);
   font-family: sans-serif;
+}
+.cardsection .simelarmovie {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.cardsection .simelarmovie p {
+  font-size: 18px;
+  padding: 22px 50px;
+  color: white;
+  border: 1px solid white;
 }
 .cardsection .cardcontainer {
   display: grid;
@@ -314,12 +344,6 @@ footer p {
   gap: 0;
   background: #272530;
 }
-.errorcom h3 {
-  padding: 11px 0;
-  font-size: 23px;
-  font-family: sans-serif;
-  color: red;
-}
 .errorcom .containerError {
   width: 100%;
   color: white;
@@ -333,16 +357,8 @@ footer p {
   width: 30%;
 }
 
-/* loader */
-.loading {
-  height: calc(100vh - 67px);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  background-color: #272530;
+.loaderContainer {
+  min-height: 100vh;
 }
 
 .itemDetails {
@@ -446,10 +462,22 @@ footer p {
   box-shadow: inset 0px -15px 12px -15px #111;
   min-height: 100vh;
 }
+.singlecardspag h3 {
+  padding: 11px 0;
+  font-size: 25px;
+  font-family: sans-serif;
+  color: red;
+}
 .singlecardspag .container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 25px;
+}
+.singlecardspag p {
+  width: 100%;
+  padding: 10px 0;
+  color: white;
+  text-align: center;
 }
 
 .infocard {
@@ -501,5 +529,203 @@ footer p {
   gap: 0;
 }
 .infocard .cardtitle h3 {
+  color: white;
+  font-size: 18px;
+}
+
+/* single page cards animated loader */
+.loader-box {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+.loader-box .spinner-box {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: transparent;
+}
+.loader-box .spinner-box p {
+  color: white;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.loader-box .spinner-box .three-quarter-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #fb5b53;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.5s linear 0s infinite;
+}
+
+/* ReachTop */
+.topbtn {
+  padding: 8px 0;
+  display: none;
+  transition: ease 0.5s;
+  width: 100%;
+}
+.topbtn .container {
+  width: 100%;
+  max-width: 1280px;
+  padding: 0px 20px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  gap: 5px;
+}
+.topbtn .container button {
+  pointer-events: visible;
+  box-shadow: -1px 6px 35px -4px rgba(0, 0, 0, 0.75);
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  background-color: #272530;
+  color: rgb(221, 28, 28);
+  font-size: 18px;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  cursor: pointer;
+}
+.topbtn .container button .icons {
+  animation: ani 0.8s linear infinite alternate-reverse;
+}
+@keyframes ani {
+  from {
+    transform: translateY(-3px);
+  }
+  to {
+    transform: translateY(3px);
+  }
+}
+
+.toprated {
+  min-height: 100vh;
+  padding-top: 87px;
+  display: flex;
+  flex-direction: column;
+  align-items: none;
+  justify-content: none;
+  gap: 0;
+}
+.toprated .gridCont .Navigateitems {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 0;
+}
+.toprated .gridCont .Navigateitems .title {
+  border-radius: 50px;
+  background-color: #1a1920;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: none;
+  gap: 4px;
+  padding: 2px 2px;
+  position: relative;
+}
+.toprated .gridCont .Navigateitems .title .btnTitle {
+  color: white;
+  font-size: 16px;
+  padding: 7px 15px;
+  border-radius: 50px;
+}
+.toprated .gridCont .Navigateitems .title .Navigator {
+  position: absolute;
+  pointer-events: none;
+  height: 43px;
+  width: auto;
+  padding: 0 10px;
+  border-radius: 50px;
+  border: none;
+  background-color: rgb(221, 28, 28);
+}
+.toprated .gridCont .Navigateitems .title .Navigator .btnTitle {
+  font-size: 16px;
+  color: white;
+}
+.toprated .gridCont .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 10px;
+}
+.toprated .gridCont .pagenation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 0;
+  padding: 20px 0;
+}
+.toprated .gridCont .pagenation p {
+  color: white;
+}
+.toprated .gridCont .pagenation button {
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(221, 28, 28);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.backdrop {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 5px;
+  padding-bottom: 14px;
+  cursor: pointer;
+}
+.backdrop .image {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  border-radius: 4px;
+}
+.backdrop .image:hover img {
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+.backdrop .image img {
+  width: 100%;
+  transition: all ease 0.5s;
+}
+.backdrop .image p {
+  position: absolute;
+  bottom: 0;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  padding: 0 0 10px 5px;
+}
+.backdrop .textsection p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   color: white;
 }/*# sourceMappingURL=index.css.map */

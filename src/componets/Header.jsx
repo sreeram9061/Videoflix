@@ -30,8 +30,7 @@ const Header = ()=> {
         </div>
         <div className="rightinner">
           <BsSearch className='searchicon'/>
-          <h3>My List</h3>
-  
+          <h3 onClick={()=>navigate('/Mylist')}>My List</h3>
         </div>
         </div>
       </Wrapper>

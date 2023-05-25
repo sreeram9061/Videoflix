@@ -2,12 +2,12 @@ import { useMemo, useState } from "react"
 import Backdropcard from "../componets/Backdropcard"
 import Wrapper from "../componets/Wrapper"
 import { useFetch } from "../customHocks/useFetch"
+import { topRatedStates } from "../context/Globlefile"
+import { useContext } from "react"
 const Toprated = () => {
 
-
-  const [itemNavigate,setItemNavigate]=useState(true)
-  const [page,setPage]=useState(1)
-
+ const [itemNavigate,setItemNavigate,page,setPage]= useContext(topRatedStates)
+ 
   useMemo(()=>{
     document.body.scrollTop=0;
     document.documentElement.scrollTop = 0;

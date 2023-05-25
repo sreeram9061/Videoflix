@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router-dom"
 import Singlecardpag from './pages/Singlecardpag'
 import Reachtopbutton from './componets/Reachtopbutton'
 import Toprated from './pages/Toprated'
+import Mylist from './pages/Mylist'
 
 function App() {
  
@@ -27,6 +28,7 @@ function App() {
            <Route path="/Movies" element={<Singlecardpag title={'Movies'}/>}/>
            <Route path="/TvShows" element={<Singlecardpag title={'Tv shows'}/>}/>
            <Route path="/TopRating" element={<Toprated/>}/>
+           <Route path="/Mylist" element={<Mylist/>}/>
          </Routes>
       </Globlefile>
       <Footer/>

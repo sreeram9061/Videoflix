@@ -3,6 +3,7 @@ import { useFetch } from "../customHocks/useFetch"
 import Infocard from "../componets/Infocard"
 import {  useContext, useEffect,useMemo,useState } from "react"
 import { TvAndMovieStatus } from "../context/Globlefile"
+import { useDeleteDuplicate } from "../customHocks/useDeleteDuplicate"
 import Loading from "../componets/Loading"
 
 const Singlecardpag = ({title}) => {
@@ -33,11 +34,11 @@ const Singlecardpag = ({title}) => {
     useMemo(()=>{
       if(title=='Tv shows'){
         result.some(item=> item.hasOwnProperty('name')) &&
-        setResult(pre=> [ ...pre, ...result]) 
+        setResult(pre=> useDeleteDuplicate([ ...pre, ...result])) 
 
       }else{
         result.some(item=> item.hasOwnProperty('title') )&&
-        setResult(pre=> [ ...pre, ...result]) 
+        setResult(pre=> useDeleteDuplicate([ ...pre, ...result])) 
       }
       setPageLoading(false)
     },[result])

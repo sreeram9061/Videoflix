@@ -1,25 +1,35 @@
 import { useContext, useEffect, useMemo } from "react"
-import { showDetails } from "../context/Globlefile"
+import { myLystContext, showDetails } from "../context/Globlefile"
 import { useParams } from "react-router-dom"
 import Wrapper from "../componets/Wrapper"
 import { useFetch } from "../customHocks/useFetch"
 import { AiFillStar } from "react-icons/ai";
 import { BiAddToQueue } from "react-icons/bi";
+import { TiTick } from "react-icons/ti";
 import Loading from "../componets/Loading"
 import Errorcom from "../componets/Errorcom"
 import Card from "../componets/Card"
+import { useCeckItemIsThere } from "../customHocks/useCeckItemIsThere";
 const Details = () => {
-
 
   const{id}=useParams()
   const [stateDetails,]=useContext(showDetails)
+
+  const [,listDispatch]=useContext(myLystContext)
+
+  const handleList=(data)=>{
+   listDispatch({
+     type:'LIST_FROM_MAIN_SLIDER',
+     payload:data,
+   })
+  }
 
   let isProperty=stateDetails.hasOwnProperty('original_title')
   let data= isProperty ? useFetch(`/movie/${id}`) : useFetch(`/tv/${id}`)
 
   useMemo(()=>{
     document.body.scrollTop=0;
-    document.documentElement.scrollTop = 0;
+    document.documentElement.scrollTop= 0;
   },[id])
 
   const [similarResult,sError,Sloading]= isProperty? 
@@ -28,8 +38,8 @@ const Details = () => {
 
   const[results,errorInfo,loading]=data
   const{backdrop_path,genres,overview,poster_path,release_date,runtime,spoken_languages,vote_average}=results
+
   
-  console.log(results)
   const bgStyle={
     backgroundImage:` url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`,
     backgroundRepeat: 'no-repeat',
@@ -58,7 +68,7 @@ const Details = () => {
                       <div className="description">
                         <h1>{isProperty ? results.original_title : results.original_name}</h1>
                         <p>{results.overview}</p>
-      
+                        
                         <div className="genres">
                           <p>Genres : {genres?.map(({name},ind)=> genres.length-1!=ind? `${name}, ` :`${name}` )}</p>
                         </div>
@@ -70,7 +80,11 @@ const Details = () => {
                         </div>
   
                         <div className="addfavorite_rate">
-                          <button><BiAddToQueue/>Add to list</button>
+                          {
+                            useCeckItemIsThere(results) ?
+                            <button style={{border:'2px solid green' ,color:'green'}} disabled ><TiTick/>Added</button> :
+                            <button onClick={()=>handleList(results)} ><BiAddToQueue/>Add to list</button>
+                          }
                           <p><AiFillStar className="staricon"/>{vote_average}</p>
                         </div>
                       </div>
