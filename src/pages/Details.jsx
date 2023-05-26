@@ -14,7 +14,6 @@ const Details = () => {
 
   const{id}=useParams()
   const [stateDetails,]=useContext(showDetails)
-
   const [,listDispatch]=useContext(myLystContext)
 
   const handleList=(data)=>{

@@ -29,9 +29,10 @@
     h3{
         color:white;
         font-size: 17px;
+        padding-bottom: 2px;
     }
 
-    padding: 20px 0;
+    padding: 18px 0;
     .container{
         @include flexBox(row,center,space-between,0);
         .leftinner{
@@ -283,6 +284,7 @@
 footer{
 
     @include flexBox(column,center,center,5px);
+    box-shadow: -2px -5px 30px -9px rgba(0,0,0,0.75);
     font-size: 16px;
     background-color: $backgroundcolor;
     padding: 2em 0;
@@ -594,7 +596,7 @@ footer{
         }
         .pagenation{
             @include flexBox(row,center,space-evenly,0);
-            padding: 20px 0;
+            padding: 35px 0;
             p{
                 color: white;
             }
@@ -651,11 +653,17 @@ footer{
 
 }
 
-
 /* my list section */
 .mylist{
-    padding-top: 87px;
+    padding: 87px 0;
     min-height: 100vh;
+    @include flexBox(column,none,none,0);
+    .emty{
+        margin: auto;
+        h2{
+            color: white;
+        }
+    }
     .sortBtns{
         @include flexBox(row,center,start,5px);
         button{
@@ -684,7 +692,6 @@ footer{
     grid-template-rows: 1fr;
     border-radius: 10px;
     overflow: hidden;
-    height: fit-content;
     position: relative;
     .mylistimage{
         display: flex;

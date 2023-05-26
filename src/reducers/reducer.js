@@ -4,5 +4,7 @@ export const listReducer=(list,{type,payload})=>{
             return [...list,payload]
         case 'DELETE_ITEM_FROM_LIST':
             return list.filter(item=> item.id!=payload.id)
+        case 'LOCAL_STORAGE_DATA' :
+            return payload
     }
 }

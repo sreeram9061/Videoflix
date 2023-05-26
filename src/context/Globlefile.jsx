@@ -1,5 +1,6 @@
-import { createContext, useMemo, useReducer, useState } from "react"
+import { createContext, useEffect, useMemo, useReducer, useState } from "react"
 import { listReducer } from "../reducers/reducer"
+import { json } from "react-router-dom"
 export const globalData=createContext()
 export const errorStatus=createContext()
 export const showDetails=createContext()
@@ -17,9 +18,22 @@ const Globlefile=({children})=>{
     const [list, listDispatch] = useReducer(listReducer,[]);
     const [property,setProperty]=useState({propertyName:null,reference:null})
 
-    useMemo(()=>{
+
+    useEffect(()=>{
         localStorage.setItem("myList", JSON.stringify(list));
     },[list])
+
+    let myListData=localStorage.getItem("myList")
+
+    useEffect(()=>{ 
+        myListData && (
+            listDispatch({
+                type:'LOCAL_STORAGE_DATA',
+                payload:JSON.parse(myListData),
+            }) 
+        )
+    },[])
+
     
     return(
         <errorStatus.Provider value={[errorStatusState,setErrorStatus]}>

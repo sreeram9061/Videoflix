@@ -1,15 +1,18 @@
 import CardMylist from "../componets/CardMylist"
 import Wrapper from "../componets/Wrapper"
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { checkPropertyMylist, myLystContext } from "../context/Globlefile";
 
-const Mylist = () => {
-  const loacoalStorageData=JSON.parse(localStorage.getItem("myList"))
 
+const Mylist = () => {
 
   const [list,listDispatch]=useContext(myLystContext)
   const [property,setProperty]=useContext(checkPropertyMylist)
   const {propertyName,reference}=property
+  const localStorageData=JSON.parse(localStorage.getItem("myList"))
+
+
+
 
   let rand=useRef()
   let movie=useRef()
@@ -24,10 +27,8 @@ const Mylist = () => {
       }else{
         item.current.style.backgroundColor='#3a3746'
         item.current.style.color='white'
-        
       }
     })
-
   }
 
   useEffect(()=>{
@@ -48,6 +49,7 @@ const Mylist = () => {
     refsStore(ref.current)
   }
 
+  console.log(list)
   return (
     <Wrapper>
        <div className="mylist">
@@ -56,13 +58,24 @@ const Mylist = () => {
           <button ref={movie} onClick={()=>handleProperty('title',movie)} >Movies</button>
           <button ref={tvshow} onClick={()=>handleProperty('name',tvshow)} >Tv Shows</button>
         </div>
-        <div className="mylistcontainer">
-         {
-           loacoalStorageData?.map(item=> (
-            (item.hasOwnProperty(propertyName) || propertyName==null) && <CardMylist key={item.id} data={item} listDispatch={listDispatch} />
-           ))
-         }
-        </div>
+        {
+          
+          list.length==0?(
+          <div className="emty">
+            <h2>List is Empty</h2>
+          </div>
+          ) : (
+            <div className="mylistcontainer">
+            {
+              list?.map(item=>(
+               (item.hasOwnProperty(propertyName) || propertyName==null) &&
+                <CardMylist key={item.id} data={item} listDispatch={listDispatch}/>
+              ))
+            }
+            </div>
+          )
+        }
+
        </div>
     </Wrapper>
   )
