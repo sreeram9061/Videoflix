@@ -1,6 +1,6 @@
 
 import { useContext, useEffect, useMemo, useRef } from "react"
-import { TvAndMovieStatus,} from "../context/Globlefile"
+import { TvAndMovieStatus, navigateHome,} from "../context/Globlefile"
 import { AiFillStar,AiFillHeart,AiFillHome } from "react-icons/ai";
 import { SlScreenDesktop } from "react-icons/sl";
 import { MdLocalMovies } from "react-icons/md";
@@ -17,8 +17,19 @@ function Mobileslider() {
   const movie=useRef()
   const topr=useRef()
   const addTolist=useRef()
-
+  const [homeNavigate,setHomeNavigate]=useContext(navigateHome)
   const iconsTextLogo=[home,tvshow,movie,topr,addTolist]
+  
+  useEffect(()=>{
+    homeNavigate && iconsTextLogo.map(item=>{
+      if(item==home){
+        console.log('reder',homeNavigate),
+        [...item.current.children].map(iner=> iner.style.color='rgb(221, 28, 28)')
+      }else{
+        [...item.current.children].map(iner=> iner.style.color='white')
+      }
+    })
+  },[homeNavigate])
 
   const handleScroll=()=>{
     if(document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight-140){
@@ -27,15 +38,14 @@ function Mobileslider() {
       mobileNav.current.style.transform= 'translateY(0)'
     }
   }
-  const initial=()=>{
-    [...home.current.children].map(iner=> {iner.style.color='rgb(221, 28, 28)'})
-  }
+
   useEffect(()=>{
-    initial()
+    [...home.current.children].map(iner=> {iner.style.color='rgb(221, 28, 28)'})
      window.addEventListener('scroll',handleScroll); 
   },[])
 
   const [,setTvAndMovie]=useContext(TvAndMovieStatus)
+
 
   const naviGatePage=(path,ref,type)=>{
     navigate(path)
@@ -45,6 +55,7 @@ function Mobileslider() {
       [...item.current.children].map(iner=> iner.style.color='rgb(221, 28, 28)'):
       [...item.current.children].map(iner=> iner.style.color='white')
     })
+    ref==home ? setHomeNavigate(true) : setHomeNavigate(false)
   }
 
   return (

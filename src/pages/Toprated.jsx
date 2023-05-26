@@ -26,37 +26,38 @@ const Toprated = () => {
    
   return (
     <>
+
+      <div className="toprated">
       {dataLoader && <Loading/>}
       {dataError && <Errorcom/>}
-      {!dataLoader && !dataError && (
-          <div className="toprated">
-              <Wrapper>
-                <div className="moviecontainer gridCont">
-      
-                   <div className="Navigateitems">
-                    <div onClick={handleNavigateMovieTv} className="title">
-                      <h3 style={itemNavigate ?  {backgroundColor:'rgb(221, 28, 28)'} : null} className="btnTitle " >Movie</h3>
-                      <h3 style={!itemNavigate ?  {backgroundColor:'rgb(221, 28, 28)'} : null}  className="btnTitle " >Tv Shows</h3>
-                    </div>
-                   </div>
-      
-                  <div className="container">
-                  {
-                    
-                    data?.map(item=>
-                        <Backdropcard item={item} />
-                    )
-                  }
-                  </div>
-                  <div className="pagenation">
-                    <button disabled={page <= 1} onClick={()=>setPage(pre=> pre-1)}>Pre</button>
-                    <p>{page}</p>
-                    <button  onClick={()=>setPage(pre=> pre+1)} >Next</button>
-                  </div>
-                </div>
-              </Wrapper>
+      {!dataLoader && !dataError &&(
+                      <Wrapper>
+                      <div className="moviecontainer gridCont">
+            
+                         <div className="Navigateitems">
+                          <div onClick={handleNavigateMovieTv} className="title">
+                            <h3 style={itemNavigate ?  {backgroundColor:'rgb(221, 28, 28)'} : null} className="btnTitle " >Movie</h3>
+                            <h3 style={!itemNavigate ?  {backgroundColor:'rgb(221, 28, 28)'} : null}  className="btnTitle " >Tv Shows</h3>
+                          </div>
+                         </div>
+            
+                        <div className="container">
+                        {
+                          data?.map(item=>
+                              <Backdropcard key={item.id} item={item} />
+                          )
+                        }
+                        </div>
+                        <div className="pagenation">
+                          <button disabled={page <= 1} onClick={()=>setPage(pre=> pre-1)}>Pre</button>
+                          <p>{page}</p>
+                          <button  onClick={()=>setPage(pre=> pre+1)} >Next</button>
+                        </div>
+                      </div>
+                    </Wrapper>
+              )}
           </div>
-         )}
+         
     </>
   )
 }

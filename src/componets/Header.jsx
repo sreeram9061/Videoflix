@@ -2,11 +2,12 @@ import React, { useContext, useRef } from 'react'
 import { BsSearch } from "react-icons/bs";
 import Wrapper from './Wrapper';
 import { useNavigate } from 'react-router-dom';
-import { TvAndMovieStatus } from '../context/Globlefile';
+import { TvAndMovieStatus, navigateHome } from '../context/Globlefile';
 
 
 const Header = ()=> {
   let navigate=useNavigate()
+  const [homeNavigate,setHomeNavigate]=useContext(navigateHome)
 
   const homeH=useRef()
   const tvshowH=useRef()
@@ -14,18 +15,19 @@ const Header = ()=> {
   const toprH=useRef()
   const addTolistH=useRef()
   const iconH=useRef()
-  const iconsTextLogo=[homeH,tvshowH,movieH,toprH,addTolistH,iconH]
+  const iconsTextLogo=[homeH,tvshowH,movieH,toprH,addTolistH]
 
   const [,setTvAndMovie]=useContext(TvAndMovieStatus)
 
   const handleNavigate=(link,ref,type)=>{
     navigate(link)
     type && setTvAndMovie(type)
-    iconsTextLogo.map(item=>
+    iconsTextLogo?.map(item=>{
       item==ref && ref!=homeH ?
       item.current.style.borderBottom='2px solid red':
       item.current.style.borderBottom='2px solid transparent'
-    )
+      ref == homeH? setHomeNavigate(true) : setHomeNavigate(false)
+    })
   }
   return(
     <div className='header'>
@@ -38,7 +40,7 @@ const Header = ()=> {
             <h3 ref={toprH}  onClick={()=>handleNavigate('/TopRating',toprH)} >Top Rating</h3>
         </div>
         <div className="rightinner">
-          <BsSearch  onClick={()=>handleNavigate(iconH)} className='searchicon'/>
+          <BsSearch   className='searchicon'/>
           <h3  ref={addTolistH} onClick={()=>handleNavigate('/Mylist',addTolistH)}>My List</h3>
         </div>
         </div>

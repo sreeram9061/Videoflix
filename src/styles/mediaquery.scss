@@ -49,10 +49,11 @@
     }
     .cardsection{
         .cardcontainer{
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         }
     }
     .singlecardspag{
+        padding-top: 0;
         .container{
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             grid-gap: 10px;
@@ -111,8 +112,22 @@
             }
         }
     }
+}
 
-    .singlecardspag{
-        padding-top: 0;
+@media (max-width: 840px){
+    .cardsection{
+        .cardcontainer {
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        }
+    }
+}
+
+@media(max-width:400px){
+    .errorcom{
+        .containerError{
+            img{
+                width: 40%;
+            }
+        }
     }
 }

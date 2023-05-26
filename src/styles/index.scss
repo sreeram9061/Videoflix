@@ -2,6 +2,16 @@
 @import 'maxins';
 @import 'colors';
 
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+     
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $backgroundcolorlight; 
+    border-radius: 10px;
+  }
+
 
 .wrapper{
     width: 100%;
@@ -307,6 +317,9 @@ footer{
     .containerError{
         width: 100%;
         color: white;
+        h1{
+            font-size: 27px;
+        }
         @include flexBox(column,center,center,0);
         img{
             width: 30%;
