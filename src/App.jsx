@@ -11,6 +11,7 @@ import Singlecardpag from './pages/Singlecardpag'
 import Reachtopbutton from './componets/Reachtopbutton'
 import Toprated from './pages/Toprated'
 import Mylist from './pages/Mylist'
+import Searchbar from './componets/Searchbar'
 
 function App() {
  
@@ -18,6 +19,7 @@ function App() {
     <div className="App" >
       <Globlefile>
       <Header/>
+      <Searchbar/>
       <div className="loackeditems">
       <Reachtopbutton/>
         <Mobileslider/>

@@ -2,12 +2,14 @@ import React, { useContext, useRef } from 'react'
 import { BsSearch } from "react-icons/bs";
 import Wrapper from './Wrapper';
 import { useNavigate } from 'react-router-dom';
-import { TvAndMovieStatus, navigateHome } from '../context/Globlefile';
+import { TvAndMovieStatus, navigateHome, searchboxContext } from '../context/Globlefile';
+import Searchbar from './Searchbar';
 
 
 const Header = ()=> {
   let navigate=useNavigate()
   const [homeNavigate,setHomeNavigate]=useContext(navigateHome)
+  const [,setIsSearchbox]=useContext(searchboxContext)
 
   const homeH=useRef()
   const tvshowH=useRef()
@@ -40,7 +42,7 @@ const Header = ()=> {
             <h3 ref={toprH}  onClick={()=>handleNavigate('/TopRating',toprH)} >Top Rating</h3>
         </div>
         <div className="rightinner">
-          <BsSearch   className='searchicon'/>
+          <h3 onClick={()=>setIsSearchbox(true)} style={{display:'flex',alignItems:'center',gap:'5px'}}>Search<BsSearch className='searchicon'/></h3>
           <h3  ref={addTolistH} onClick={()=>handleNavigate('/Mylist',addTolistH)}>My List</h3>
         </div>
         </div>

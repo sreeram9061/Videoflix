@@ -8,6 +8,7 @@ export const topRatedStates=createContext()
 export const myLystContext=createContext()
 export const checkPropertyMylist=createContext()
 export const navigateHome=createContext()
+export const searchboxContext=createContext()
 
 const Globlefile=({children})=>{
     let [stateDetails,setDetails]=useState({})
@@ -18,6 +19,8 @@ const Globlefile=({children})=>{
     const [page,setPage]=useState(1)
     const [list, listDispatch] = useReducer(listReducer,[]);
     const [property,setProperty]=useState({propertyName:null,reference:null})
+    const [isSearchbox,setIsSearchbox]=useState(false)
+    console.log(isSearchbox)
 
     useEffect(()=>{
         localStorage.setItem("myList", JSON.stringify(list));
@@ -43,7 +46,9 @@ const Globlefile=({children})=>{
         <myLystContext.Provider value={[list, listDispatch]}>
         <checkPropertyMylist.Provider value={[property,setProperty]}>
         <navigateHome.Provider value={[homeNavigate,setHomeNavigate]}>
-        {children}
+            <searchboxContext.Provider value={[isSearchbox,setIsSearchbox]}>
+            {children}
+            </searchboxContext.Provider>
         </navigateHome.Provider>
         </checkPropertyMylist.Provider>
         </myLystContext.Provider>

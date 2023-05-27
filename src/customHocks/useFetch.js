@@ -5,7 +5,7 @@ export const useFetch=(url,custoumParams={})=>{
    const [results,setResults] =useState([])
    const [errorInfo,setError] =useState(null)
    const [loading,setLoading]=useState(true)
-   const{page}=custoumParams
+   const{page,query}=custoumParams
 
    const option={
        method:'get',
@@ -32,7 +32,7 @@ export const useFetch=(url,custoumParams={})=>{
         }
         fetch()
 
-    },[page,url])
+    },[page,url,query])
 
     return [results,errorInfo,loading]
 }
