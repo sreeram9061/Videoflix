@@ -813,10 +813,9 @@ footer{
         button{
             @include styleSearchBtn()
          }
-        padding: 10px 10px;
+        padding: 10px 20px;
         max-width: 700px;
         width: 700px;
-        min-height: 200px;
         max-height: 600px;
         background-color: $backgroundcolorlight;
         border-radius: 10px;
@@ -836,15 +835,24 @@ footer{
         }
 
         .resultdata{
-            overflow: auto;
+            overflow: overlay;
+            &::-webkit-scrollbar-thumb {
+                background: white; 
+                border-radius: 10px;
+              }
             max-height:500px;
             ul{
                 @include flexBox(column,start,center,10px); 
                 li{
                     @include flexBox(row,start,start,5px); 
+                    width: 100%;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: $backgroundcolor;
+                    }
                     color: white;
                     img{
-                        width: 95px;
+                        width: 90px;
                     }
                 }
             }

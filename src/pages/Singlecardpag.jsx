@@ -16,7 +16,7 @@ const Singlecardpag = ({title}) => {
     let [result,error,loading]= title=='Tv shows'?
     useFetch('/tv/on_the_air',{page}):
     useFetch('/movie/popular',{page})
-
+    console.log(result)
     const handleCheck =()=>{
         if(window.innerHeight+document.documentElement.scrollTop+1 >= document.documentElement.scrollHeight){
           setPage((pre)=>pre+1)
@@ -32,21 +32,13 @@ const Singlecardpag = ({title}) => {
     },[TvAndMovieState])
 
     useMemo(()=>{
-      if(title=='Tv shows'){
-        result.some(item=> item.hasOwnProperty('name')) &&
-        setResult(pre=> useDeleteDuplicate([ ...pre, ...result])) 
-
-      }else{
-        result.some(item=> item.hasOwnProperty('title') )&&
-        setResult(pre=> useDeleteDuplicate([ ...pre, ...result])) 
-      }
+      setResult(pre=> useDeleteDuplicate([ ...pre, ...result])) 
       setPageLoading(false)
     },[result])
 
 
     useEffect(()=>{
       window.addEventListener('scroll',handleCheck)
-
       return()=>{
         window.removeEventListener('scroll',handleCheck)
       }

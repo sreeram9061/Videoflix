@@ -36,7 +36,8 @@ const Details = () => {
   useFetch(`/tv/${id}/similar`)
 
   const[results,errorInfo,loading]=data
-  const{backdrop_path,genres,overview,poster_path,release_date,runtime,spoken_languages,vote_average}=results
+  console.log(results)
+  const{backdrop_path,genres,overview,poster_path,release_date,first_air_date,runtime,spoken_languages,vote_average}=results
 
   
   const bgStyle={
@@ -71,9 +72,9 @@ const Details = () => {
                         <div className="genres">
                           <p>Genres : {genres?.map(({name},ind)=> genres.length-1!=ind? `${name}, ` :`${name}` )}</p>
                         </div>
-                        <p>Release Date : {release_date}</p> 
+                        <p>Release Date : {release_date ? release_date : first_air_date}</p> 
 
-                        <p>Runtime :{runtime}</p>
+                        <p>Runtime :{runtime ? runtime : results.episode_run_time.map(item=> item)}</p>
                         <div className="genres">
                         <p>Language : {spoken_languages?.map(({name},ind)=> spoken_languages.length-1!=ind? `${name}, ` :`${name}`)}</p>
                         </div>

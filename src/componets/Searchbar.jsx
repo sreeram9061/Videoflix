@@ -1,13 +1,16 @@
 import { ImCross } from "react-icons/im";
-import { searchboxContext } from "../context/Globlefile";
+import { searchboxContext, showDetails } from "../context/Globlefile";
 import { useContext, useRef, useState } from "react";
 import { useFetch } from "../customHocks/useFetch";
 import { useStringMinimize } from "../customHocks/useStringMinimize";
+import { useNavigate } from "react-router-dom";
 const Searchbar = () => {
     const closbtn= useRef()
+    const navigate=useNavigate()
     const [textBoxQuery,setTextBoxQuery]=useState('')
     const [isSearchbox,setIsSearchbox]=useContext(searchboxContext)
     const[typeOfFetching,setTypeOfFetching]=useState(true)
+    const [,setDetails]=useContext(showDetails)
 
     const [results,errorInfo,loading]=useFetch(typeOfFetching ? 'search/movie' : 'search/tv',{query:textBoxQuery})
 
@@ -18,10 +21,17 @@ const Searchbar = () => {
       }
     }
     isSearchbox ? document.body.style.overflow='hidden' : document.body.style.overflow='auto'
-
+    console.log(results)
     const handleFetchs=(cont)=>{
       setTextBoxQuery('')
       setTypeOfFetching(cont)
+    }
+
+    const handleMovieDetails=(id,item)=>{
+      setTextBoxQuery('')
+      setIsSearchbox(false)
+      navigate(`/Details/${id}`)
+      setDetails(item)
     }
 
   return (
@@ -44,7 +54,7 @@ const Searchbar = () => {
               <ul>
               {
                 results?.map(item=>(
-                  <li>
+                  <li onClick={()=>handleMovieDetails(item.id,item)} >
                     <img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="" />
                     <div className="discreption">
                     <h3>{ typeOfFetching ? item.title : item.name}</h3>
