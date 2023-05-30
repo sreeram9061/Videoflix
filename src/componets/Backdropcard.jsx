@@ -1,18 +1,14 @@
 import { AiFillStar } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { showDetails } from "../context/Globlefile";
-import { useContext } from "react";
 const Backdropcard = ({item})=>{
 
     const {backdrop_path,id,title,name,vote_average}=item
     const navigate=useNavigate()
-    const [,setDetails]=useContext(showDetails)
 
     const handleData=()=>{
       navigate(`/Details/${id}`)
-      setDetails(item)
+      localStorage.setItem('ItemOfDetails',JSON.stringify(item))
     }
-
 
   return (
     <div className="backdrop" onClick={handleData}>

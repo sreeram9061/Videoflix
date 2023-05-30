@@ -1,13 +1,11 @@
 import { AiFillStar,AiFillDelete,AiOutlineFullscreen } from "react-icons/ai";
 import { useStringMinimize } from "../customHocks/useStringMinimize";
-import { myLystContext, showDetails } from "../context/Globlefile";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 const CardMylist = ({data,listDispatch}) => {
 
   const{poster_path,id,title,name,first_air_date,release_date,vote_average}=data
   const navigate=useNavigate()
-  const [,setDetails]=useContext(showDetails)
 
   const handleDeleteList=()=>{
    listDispatch({
@@ -18,6 +16,7 @@ const CardMylist = ({data,listDispatch}) => {
   const handleNavigatePage=()=>{
     navigate(`/Details/${id}`)
     setDetails(data)
+    localStorage.setItem('ItemOfDetails',JSON.stringify(data))
   }
 
   return (

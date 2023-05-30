@@ -1,5 +1,5 @@
 import { ImCross } from "react-icons/im";
-import { searchboxContext, showDetails } from "../context/Globlefile";
+import { searchboxContext } from "../context/Globlefile";
 import { useContext, useRef, useState } from "react";
 import { useFetch } from "../customHocks/useFetch";
 import { useStringMinimize } from "../customHocks/useStringMinimize";
@@ -10,7 +10,6 @@ const Searchbar = () => {
     const [textBoxQuery,setTextBoxQuery]=useState('')
     const [isSearchbox,setIsSearchbox]=useContext(searchboxContext)
     const[typeOfFetching,setTypeOfFetching]=useState(true)
-    const [,setDetails]=useContext(showDetails)
 
     const [results,errorInfo,loading]=useFetch(typeOfFetching ? 'search/movie' : 'search/tv',{query:textBoxQuery})
 
@@ -21,7 +20,7 @@ const Searchbar = () => {
       }
     }
     isSearchbox ? document.body.style.overflow='hidden' : document.body.style.overflow='auto'
-    console.log(results)
+
     const handleFetchs=(cont)=>{
       setTextBoxQuery('')
       setTypeOfFetching(cont)
@@ -31,7 +30,7 @@ const Searchbar = () => {
       setTextBoxQuery('')
       setIsSearchbox(false)
       navigate(`/Details/${id}`)
-      setDetails(item)
+      localStorage.setItem('ItemOfDetails',JSON.stringify(item))
     }
 
   return (

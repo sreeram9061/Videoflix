@@ -44,7 +44,7 @@ const Singlecardpag = ({title}) => {
       }
     })
 
-  return (
+  return(
     <div className="singlecardspag">
         <Wrapper>
             <h3>{title}</h3>

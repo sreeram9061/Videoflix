@@ -1,49 +1,26 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext } from 'react'
 import { BsSearch } from "react-icons/bs";
 import Wrapper from './Wrapper';
-import { useNavigate } from 'react-router-dom';
-import { TvAndMovieStatus, navigateHome, searchboxContext } from '../context/Globlefile';
-import Searchbar from './Searchbar';
-
+import { NavLink,Link } from 'react-router-dom';
+import { TvAndMovieStatus, searchboxContext} from '../context/Globlefile';
 
 const Header = ()=> {
-  let navigate=useNavigate()
-  const [homeNavigate,setHomeNavigate]=useContext(navigateHome)
   const [,setIsSearchbox]=useContext(searchboxContext)
-
-  const homeH=useRef()
-  const tvshowH=useRef()
-  const movieH=useRef()
-  const toprH=useRef()
-  const addTolistH=useRef()
-  const iconH=useRef()
-  const iconsTextLogo=[homeH,tvshowH,movieH,toprH,addTolistH]
-
   const [,setTvAndMovie]=useContext(TvAndMovieStatus)
 
-  const handleNavigate=(link,ref,type)=>{
-    navigate(link)
-    type && setTvAndMovie(type)
-    iconsTextLogo?.map(item=>{
-      item==ref && ref!=homeH ?
-      item.current.style.borderBottom='2px solid red':
-      item.current.style.borderBottom='2px solid transparent'
-      ref == homeH? setHomeNavigate(true) : setHomeNavigate(false)
-    })
-  }
   return(
     <div className='header'>
       <Wrapper>
         <div className="container">
         <div className="leftinner">
-            <h2 ref={homeH} onClick={()=>handleNavigate('/',homeH)} >VIDEOFLIX</h2>
-            <h3 ref={tvshowH}  onClick={()=>handleNavigate('/TvShows',tvshowH,'Tv')}>Tv Shows</h3>
-            <h3 ref={movieH}  onClick={()=>handleNavigate('/Movies',movieH,'Movie')} >Movies</h3>
-            <h3 ref={toprH}  onClick={()=>handleNavigate('/TopRating',toprH)} >Top Rating</h3>
+          <Link to='/'><h2>VIDEOFLIX</h2></Link>
+          <NavLink onClick={()=>setTvAndMovie('Tv shows')} to="/TvShows" ><h3 >Tv Shows</h3></NavLink>
+          <NavLink onClick={()=>setTvAndMovie('Movies')} to="/Movies" ><h3 >Movies</h3></NavLink>
+          <NavLink to="/TopRating" ><h3 >Top Rating</h3></NavLink>
         </div>
         <div className="rightinner">
-          <h3 onClick={()=>setIsSearchbox(true)} style={{display:'flex',alignItems:'center',gap:'5px'}}>Search<BsSearch className='searchicon'/></h3>
-          <h3  ref={addTolistH} onClick={()=>handleNavigate('/Mylist',addTolistH)}>My List</h3>
+          <a onClick={()=>setIsSearchbox(true)} ><h3 style={{display:'flex',alignItems:'center',gap:'5px',color:'white'}}>Search<BsSearch className='searchicon'/></h3></a>
+          <NavLink to="/Mylist"><h3>My List</h3></NavLink>
         </div>
         </div>
       </Wrapper>

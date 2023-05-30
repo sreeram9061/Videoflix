@@ -1,5 +1,5 @@
-import { useContext, useEffect, useMemo } from "react"
-import { myLystContext, showDetails } from "../context/Globlefile"
+import { useContext, useMemo } from "react"
+import { myLystContext } from "../context/Globlefile"
 import { useParams } from "react-router-dom"
 import Wrapper from "../componets/Wrapper"
 import { useFetch } from "../customHocks/useFetch"
@@ -10,10 +10,11 @@ import Loading from "../componets/Loading"
 import Errorcom from "../componets/Errorcom"
 import Card from "../componets/Card"
 import { useCeckItemIsThere } from "../customHocks/useCeckItemIsThere";
-const Details = () => {
 
+
+
+const Details = () => {
   const{id}=useParams()
-  const [stateDetails,]=useContext(showDetails)
   const [,listDispatch]=useContext(myLystContext)
 
   const handleList=(data)=>{
@@ -23,13 +24,15 @@ const Details = () => {
    })
   }
 
-  let isProperty=stateDetails.hasOwnProperty('original_title')
+  
+/*   let isProperty=stateDetails.hasOwnProperty('title') */
+  let isProperty=JSON.parse(localStorage.getItem('ItemOfDetails')).hasOwnProperty('title')
   let data= isProperty ? useFetch(`/movie/${id}`) : useFetch(`/tv/${id}`)
 
   useMemo(()=>{
     document.body.scrollTop=0;
     document.documentElement.scrollTop= 0;
-  },[id])
+  },[])
 
   const [similarResult,sError,Sloading]= isProperty? 
   useFetch(`movie/${id}/similar`):

@@ -4,8 +4,7 @@ import { useContext } from 'react';
 import { BiAddToQueue } from "react-icons/bi";
 import { TiTick } from "react-icons/ti";
 import { AiFillStar } from "react-icons/ai";
-import { showDetails } from '../context/Globlefile';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 import { myLystContext } from '../context/Globlefile';
 import { useCeckItemIsThere } from '../customHocks/useCeckItemIsThere';
 
@@ -20,7 +19,6 @@ const Slider = ({mainSlideResults}) => {
     payload:data,
   })
  }
-
       let splideOptions = {
         heightRatio: 0.5,
         pagination: false,
@@ -38,10 +36,10 @@ const Slider = ({mainSlideResults}) => {
       };
 
       const navigate = useNavigate()
-      const [,setDetails]=useContext(showDetails)
       const handleMovieDetails=(id,item)=>{
         navigate(`/Details/${id}`)
         setDetails(item)
+        localStorage.setItem('ItemOfDetails',JSON.stringify(item))
       }
 
   return (

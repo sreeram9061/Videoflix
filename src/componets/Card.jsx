@@ -1,15 +1,13 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { showDetails } from "../context/Globlefile"
 const Card = ({titile,result}) => {
 
    const[lengthState,setLengthState]=useState(false)
    const navigate = useNavigate()
-   const [,setDetails]=useContext(showDetails)
 
    const handleMovieDetails=(id,item)=>{
     navigate(`/Details/${id}`)
-    setDetails(item)
+    localStorage.setItem('ItemOfDetails',JSON.stringify(item))
     setLengthState(false)
    }
 
