@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react"
 import { myLystContext } from "../context/Globlefile"
-import { useParams } from "react-router-dom"
+import { json, useParams } from "react-router-dom"
 import Wrapper from "../componets/Wrapper"
 import { useFetch } from "../customHocks/useFetch"
 import { AiFillStar } from "react-icons/ai";
@@ -10,6 +10,7 @@ import Loading from "../componets/Loading"
 import Errorcom from "../componets/Errorcom"
 import Card from "../componets/Card"
 import { useCeckItemIsThere } from "../customHocks/useCeckItemIsThere";
+import { useStringMinimize } from "../customHocks/useStringMinimize"
 
 
 
@@ -77,7 +78,7 @@ const Details = () => {
                         </div>
                         <p>Release Date : {release_date ? release_date : first_air_date}</p> 
 
-                        <p>Runtime :{runtime ? runtime : results.episode_run_time.map(item=> item)}</p>
+                        <p>Runtime :{runtime ? ` ${runtime} minutes` : ` ${results.episode_run_time.map(item=> item)} minutes`}</p>
                         <div className="genres">
                         <p>Language : {spoken_languages?.map(({name},ind)=> spoken_languages.length-1!=ind? `${name}, ` :`${name}`)}</p>
                         </div>
@@ -88,7 +89,7 @@ const Details = () => {
                             <button style={{border:'2px solid green' ,color:'green'}} disabled ><TiTick/>Added</button> :
                             <button onClick={()=>handleList(results)} ><BiAddToQueue/>Add to list</button>
                           }
-                          <p><AiFillStar className="staricon"/>{vote_average}</p>
+                          <p><AiFillStar className="staricon"/>{`${useStringMinimize(JSON.stringify(vote_average),0,3)}/10`}</p>
                         </div>
                       </div>
                     </div>

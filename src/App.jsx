@@ -16,6 +16,7 @@ import OutleMovie from './componets/OutleMovie'
 import OutletTvshows from './componets/OutletTvshows'
 import Details from './pages/Details'
 import OutletMylist from './componets/OutletMylist'
+import OutletToprating from './componets/OutletToprating'
 
 function App() {
  
@@ -41,11 +42,11 @@ function App() {
              <Route index element={<Singlecardpag title={'Tv shows'} />} />
              <Route path=":id" element={<Details/>}/>
            </Route>
-           <Route path="/TopRating" element={<OutletTvshows/>}>
+
+           <Route path="/TopRating" element={<OutletToprating/>}>
               <Route index element={<Toprated/>}/>
               <Route path=":id" element={<Details/>}/>
            </Route>
-
 
            <Route path="/Mylist" element={<OutletMylist/>} >
                <Route index element={<Mylist/>}/>

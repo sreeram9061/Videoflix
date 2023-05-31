@@ -26,7 +26,7 @@ const CardMylist = ({data,listDispatch}) => {
         <div className="discription">
             <h3>{title? title : name}</h3>
             <p>{useStringMinimize( release_date? release_date : first_air_date,0,4)}</p>
-            <p>{vote_average}<AiFillStar className="icons"/></p>
+            <p>{useStringMinimize(JSON.stringify(vote_average),0,3)}<AiFillStar className="icons"/></p>
         </div>
         <div className="viewOrDelete">
             <button onClick={handleDeleteList} className="delete"> <AiFillDelete/> </button>

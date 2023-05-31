@@ -24,6 +24,10 @@ const Singlecardpag = ({title}) => {
         }
     }
 
+    console.log(result)
+
+
+
     useMemo(()=>{
       setResult([])
       setPage(1)
