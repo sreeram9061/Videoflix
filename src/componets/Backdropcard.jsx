@@ -6,7 +6,7 @@ const Backdropcard = ({item})=>{
     const navigate=useNavigate()
 
     const handleData=()=>{
-      navigate(`/Details/${id}`)
+      navigate(`/${id}`)
       localStorage.setItem('ItemOfDetails',JSON.stringify(item))
     }
 

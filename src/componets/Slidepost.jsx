@@ -8,7 +8,7 @@ const Slidepost = ({result}) => {
 
   const navigatePage=(item)=>{
     localStorage.setItem('ItemOfDetails',JSON.stringify(item))
-    navaigate(`/Details/${item.id}`)
+    navaigate(`/${item.id}`)
   }
  
     const slidOption={

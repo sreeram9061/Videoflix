@@ -29,7 +29,7 @@ const Searchbar = () => {
     const handleMovieDetails=(id,item)=>{
       setTextBoxQuery('')
       setIsSearchbox(false)
-      navigate(`/Details/${id}`)
+      navigate(`/${id}`)
       localStorage.setItem('ItemOfDetails',JSON.stringify(item))
     }
 

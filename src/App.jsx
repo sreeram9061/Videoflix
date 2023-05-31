@@ -12,6 +12,10 @@ import Reachtopbutton from './componets/Reachtopbutton'
 import Toprated from './pages/Toprated'
 import Mylist from './pages/Mylist'
 import Searchbar from './componets/Searchbar'
+import OutleMovie from './componets/OutleMovie'
+import OutletTvshows from './componets/OutletTvshows'
+import Details from './pages/Details'
+import OutletMylist from './componets/OutletMylist'
 
 function App() {
  
@@ -26,11 +30,28 @@ function App() {
       </div>
          <Routes>
            <Route path="/" element={<Home />} />
-           <Route path="/Details/:id" element={<MovieDetails/>}/>
-           <Route path="/Movies" element={<Singlecardpag title={'Movies'}/>}/>
-           <Route path="/TvShows" element={<Singlecardpag title={'Tv shows'}/>}/>
-           <Route path="/TopRating" element={<Toprated/>}/>
-           <Route path="/Mylist" element={<Mylist/>}/>
+           <Route path="/:id" element={<Details/>}/>
+           
+           <Route path="/Movies" element={<OutleMovie/>}>
+             <Route index element={<Singlecardpag title={'Movies'}/>}/>
+             <Route path=":id" element={<Details/>}/>
+           </Route>
+
+           <Route path="/TvShows" element={<OutletTvshows/>}>
+             <Route index element={<Singlecardpag title={'Tv shows'} />} />
+             <Route path=":id" element={<Details/>}/>
+           </Route>
+           <Route path="/TopRating" element={<OutletTvshows/>}>
+              <Route index element={<Toprated/>}/>
+              <Route path=":id" element={<Details/>}/>
+           </Route>
+
+
+           <Route path="/Mylist" element={<OutletMylist/>} >
+               <Route index element={<Mylist/>}/>
+               <Route path=":id" element={<Details/>}/>
+           </Route>
+
          </Routes>
       </Globlefile>
       <Footer/>

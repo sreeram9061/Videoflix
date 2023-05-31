@@ -25,10 +25,10 @@ const Details = () => {
   }
 
   
-/*   let isProperty=stateDetails.hasOwnProperty('title') */
+  /*let isProperty=stateDetails.hasOwnProperty('title')*/
   let isProperty=JSON.parse(localStorage.getItem('ItemOfDetails')).hasOwnProperty('title')
   let data= isProperty ? useFetch(`/movie/${id}`) : useFetch(`/tv/${id}`)
-
+  
   useMemo(()=>{
     document.body.scrollTop=0;
     document.documentElement.scrollTop= 0;

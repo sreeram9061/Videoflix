@@ -14,8 +14,7 @@ const CardMylist = ({data,listDispatch}) => {
    })
   }
   const handleNavigatePage=()=>{
-    navigate(`/Details/${id}`)
-    setDetails(data)
+    navigate(`${id}`)
     localStorage.setItem('ItemOfDetails',JSON.stringify(data))
   }
 

@@ -6,7 +6,7 @@ const Infocard = ({data}) => {
     const navigate=useNavigate()
 
     const handleMovieDetails=(id,item)=>{
-      navigate(`/Details/${id}`)
+      navigate(`${id}`)
       localStorage.setItem('ItemOfDetails',JSON.stringify(item))
     }
 

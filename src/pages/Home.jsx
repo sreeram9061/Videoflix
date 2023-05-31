@@ -23,6 +23,8 @@ function Home() {
     document.documentElement.scrollTop= 0;
   },[])
 
+  
+
   return (
     <div className="home">
         {loading && <Loading/>}

@@ -19,7 +19,7 @@ const Header = ()=> {
           <NavLink to="/TopRating" ><h3 >Top Rating</h3></NavLink>
         </div>
         <div className="rightinner">
-          <a onClick={()=>setIsSearchbox(true)} ><h3 style={{display:'flex',alignItems:'center',gap:'5px',color:'white'}}>Search<BsSearch className='searchicon'/></h3></a>
+          <a className='serach' onClick={()=>setIsSearchbox(true)} ><h3 style={{display:'flex',alignItems:'center',gap:'5px',color:'white'}}>Search<BsSearch className='searchicon'/></h3></a>
           <NavLink to="/Mylist"><h3>My List</h3></NavLink>
         </div>
         </div>

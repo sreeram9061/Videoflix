@@ -10,15 +10,17 @@
         background-color: $backgroundcolor;
         .container{
             .leftinner{
-                h3{
-                    display: none;
+                a{
+                    h3{
+                        display: none;
+                    }
                 }
             }
             .rightinner{
-                h3{
+                a{
                     display: none;
                 }
-                .status{
+                .serach{
                     display: block;
                 }
             }
