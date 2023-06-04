@@ -228,6 +228,7 @@
         color: $primerycolor;
         font-family: sans-serif;
         padding-bottom: 10px;
+    
     }
     .container{
         
@@ -243,6 +244,9 @@
                         
                     }
                 }
+            }
+            .swiper-button-prev, .swiper-button-next{
+                display: none
             }
         }
 

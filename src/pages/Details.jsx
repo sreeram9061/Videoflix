@@ -86,7 +86,7 @@ const Details = () => {
                         <div className="addfavorite_rate">
                           {
                             useCeckItemIsThere(results) ?
-                            <button style={{border:'2px solid green' ,color:'green'}} disabled ><TiTick/>Added</button> :
+                            <button style={{border:'2px solid green' ,color:'green',cursor:'no-drop'}} disabled ><TiTick/>Added</button> :
                             <button onClick={()=>handleList(results)} ><BiAddToQueue/>Add to list</button>
                           }
                           <p><AiFillStar className="staricon"/>{`${useStringMinimize(JSON.stringify(vote_average),0,3)}/10`}</p>

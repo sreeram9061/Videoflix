@@ -7,9 +7,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { useFetch } from '../customHocks/useFetch';
 
 
-const HomePosterSlider = ({results,delay}) => {
+const HomePosterSlider = ({page,delay}) => {
+    const[results,errorMsg,loadMsg]=useFetch('/tv/popular',{page})
+    
+    console.log(results)
     const navaigate=useNavigate()
 
     const navigatePage=(item)=>{

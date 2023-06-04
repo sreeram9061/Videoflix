@@ -63,8 +63,8 @@ const Slider = ({mainSlideResults}) => {
                            <p className='shadow' >{item.overview}</p>
                            <div className="btnsRating">
                             {
-                              useCeckItemIsThere(item) ?
-                              <button  style={{border:'2px solid green' ,color:'green' ,backgroundColor:'transparent'}} disabled ><TiTick/>Added</button> :
+                               useCeckItemIsThere(item) ?
+                              <button style={{border:'2px solid green' ,color:'green' ,backgroundColor:'transparent',cursor:'no-drop'}} disabled ><TiTick/>Added</button> :
                               <button className='btnone' onClick={()=>handleList(item)} ><BiAddToQueue/> Add to list</button>
                             }
                            <button onClick={()=>handleMovieDetails(item.id,item)} className='btntow' >More</button>

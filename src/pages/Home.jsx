@@ -9,14 +9,12 @@ import HomePosterSlider from "../componets/HomePosterSlider"
 
 function Home() {
   const [mainSlideResults,mainSlideErrorInfo,slideLoading]=useFetch('/movie/now_playing',{page:1})
-  const [fSmllSlideResults,fSmallSlideErrorInfo,fSmallloading]=useFetch('/tv/popular',{page:1})
-  const [sSmllSlideResults,sSmallSlideErrorInfo,sSmallSlideloading]=useFetch('/tv/popular',{page:2})
   const [cardDataOne,cardDataErrorInfo,cardloading]=useFetch('/movie/popular',{page:1})
   const [cardDataTow,cardDataErrorInTow,cardTowLoading]=useFetch('/tv/airing_today',{page:3})
 
   /* here cheking error || loading has or not */
-  const loading=[slideLoading,fSmallloading,sSmallSlideloading,cardloading,cardTowLoading].some(item=> item==true)
-  const errorIsIn=[mainSlideErrorInfo,fSmallSlideErrorInfo,sSmallSlideErrorInfo,cardDataErrorInfo,cardDataErrorInTow].every(item=> item? true : false)
+  const loading=[slideLoading,cardloading,cardTowLoading].some(item=> item==true)
+  const errorIsIn=[mainSlideErrorInfo,cardDataErrorInfo,cardDataErrorInTow].every(item=> item? true : false)
 
   useMemo(()=>{
     document.body.scrollTop=0;
@@ -37,8 +35,8 @@ function Home() {
               <Wrapper>
                  <h2>Best Tv show</h2>
               </Wrapper>
-               <HomePosterSlider {...{results:[fSmllSlideResults],delay:3000}}/>
-               <HomePosterSlider {...{results:[sSmllSlideResults],delay:2500}}/>
+
+              <HomePosterSlider {...{page:1,delay:3000}}/>
            </div>
            <Wrapper>
            <Card titile={'Now Playing Movies'} result={cardDataOne} />
