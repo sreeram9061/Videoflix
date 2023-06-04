@@ -17,7 +17,6 @@ const Globlefile=({children})=>{
     const [list, listDispatch] = useReducer(listReducer,[]);
     const [property,setProperty]=useState({propertyName:null,reference:null})
     const [isSearchbox,setIsSearchbox]=useState(false)
-    console.log(isSearchbox)
 
     useEffect(()=>{
         localStorage.setItem("myList", JSON.stringify(list));

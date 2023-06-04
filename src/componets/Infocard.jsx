@@ -9,7 +9,7 @@ const Infocard = ({data}) => {
       navigate(`${id}`)
       localStorage.setItem('ItemOfDetails',JSON.stringify(item))
     }
-
+  
   return (
     <div className="infocard" onClick={()=>handleMovieDetails(data.id,data)} >
         <div className="image">

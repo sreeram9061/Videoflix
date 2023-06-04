@@ -1,7 +1,6 @@
 import { AiFillStar,AiFillDelete,AiOutlineFullscreen } from "react-icons/ai";
 import { useStringMinimize } from "../customHocks/useStringMinimize";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 const CardMylist = ({data,listDispatch}) => {
 
   const{poster_path,id,title,name,first_air_date,release_date,vote_average}=data

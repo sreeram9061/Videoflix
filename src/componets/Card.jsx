@@ -14,10 +14,7 @@ const Card = ({titile,result}) => {
   return (
     <div className="cardsection">
         <h2>{titile}</h2>
-        
-
-        {
-         
+        { 
           result.length==0 ? (
             <div className="simelarmovie">
               <p>{`${titile} not available`}</p>

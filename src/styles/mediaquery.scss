@@ -91,6 +91,24 @@
         padding: 16px 0;
     }
 
+    .slidepost{
+        .container{
+            .swiper{
+                .swiper-wrapper{
+                    .swiper-slide{
+                        width: auto;
+                        img{
+                            width: 130px;
+                            cursor: pointer;
+                            
+                        }
+                    }
+                }
+            }
+    
+        }
+    }
+
 }
 
 

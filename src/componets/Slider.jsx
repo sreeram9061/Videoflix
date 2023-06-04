@@ -1,6 +1,6 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BiAddToQueue } from "react-icons/bi";
 import { TiTick } from "react-icons/ti";
 import { AiFillStar } from "react-icons/ai";
@@ -38,16 +38,24 @@ const Slider = ({mainSlideResults}) => {
       const navigate = useNavigate()
       const handleMovieDetails=(id,item)=>{
         navigate(`/${id}`)
-        setDetails(item)
         localStorage.setItem('ItemOfDetails',JSON.stringify(item))
       }
+
+
+      const handleMobileNavigate=(id,item)=>{
+        if(window.matchMedia("(max-width: 940px)").matches){
+          navigate(`/${id}`)
+          localStorage.setItem('ItemOfDetails',JSON.stringify(item))
+        }
+      }
+
   return (
 
     <div className="slider">
           <Splide options={splideOptions}>
           {
               mainSlideResults?.map(item=>
-                <SplideSlide  key={item.id} className='innerslider'>
+                <SplideSlide onClick={()=>handleMobileNavigate(item.id,item)} key={item.id} className='innerslider'>
                   <img   src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`} alt="" />
                     <div className="wrraperdiscription">
                       <div className="discription">

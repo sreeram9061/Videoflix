@@ -1,18 +1,18 @@
 import Slider from "../componets/Slider"
-import Slidepost from "../componets/Slidepost"
 import Wrapper from "../componets/Wrapper"
 import Card from "../componets/Card"
 import Errorcom from "../componets/Errorcom"
 import { useFetch } from "../customHocks/useFetch"
 import Loading from "../componets/Loading"
 import { useMemo } from "react"
+import HomePosterSlider from "../componets/HomePosterSlider"
 
 function Home() {
   const [mainSlideResults,mainSlideErrorInfo,slideLoading]=useFetch('/movie/now_playing',{page:1})
-  const [fSmllSlideResults,fSmallSlideErrorInfo,fSmallloading]=useFetch('/tv/on_the_air',{page:1})
-  const [sSmllSlideResults,sSmallSlideErrorInfo,sSmallSlideloading]=useFetch('/tv/on_the_air',{page:2})
+  const [fSmllSlideResults,fSmallSlideErrorInfo,fSmallloading]=useFetch('/tv/popular',{page:1})
+  const [sSmllSlideResults,sSmallSlideErrorInfo,sSmallSlideloading]=useFetch('/tv/popular',{page:2})
   const [cardDataOne,cardDataErrorInfo,cardloading]=useFetch('/movie/popular',{page:1})
-  const [cardDataTow,cardDataErrorInTow,cardTowLoading]=useFetch('/tv/airing_today',{page:1})
+  const [cardDataTow,cardDataErrorInTow,cardTowLoading]=useFetch('/tv/airing_today',{page:3})
 
   /* here cheking error || loading has or not */
   const loading=[slideLoading,fSmallloading,sSmallSlideloading,cardloading,cardTowLoading].some(item=> item==true)
@@ -37,8 +37,8 @@ function Home() {
               <Wrapper>
                  <h2>Best Tv show</h2>
               </Wrapper>
-               <Slidepost {...{result:[fSmllSlideResults]}}/>
-               <Slidepost {...{result:[sSmllSlideResults]}}/>
+               <HomePosterSlider {...{results:[fSmllSlideResults],delay:3000}}/>
+               <HomePosterSlider {...{results:[sSmllSlideResults],delay:2500}}/>
            </div>
            <Wrapper>
            <Card titile={'Now Playing Movies'} result={cardDataOne} />
