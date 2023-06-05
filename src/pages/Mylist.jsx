@@ -13,11 +13,7 @@ const Mylist = () => {
 
   const [list,listDispatch]=useContext(myLystContext)
   const [property,setProperty]=useContext(checkPropertyMylist)
-  const {propertyName,reference}=property
-  const localStorageData=JSON.parse(localStorage.getItem("myList"))
-
-
-
+  const {propertyName}=property
 
   let rand=useRef()
   let movie=useRef()

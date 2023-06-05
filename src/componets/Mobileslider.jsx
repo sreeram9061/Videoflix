@@ -21,7 +21,6 @@ function Mobileslider() {
 
   useEffect(()=>{
      window.addEventListener('scroll',handleScroll); 
-     window.removeEventListener('scroll',handleScroll); 
   })
   const [,setTvAndMovie]=useContext(TvAndMovieStatus)
 

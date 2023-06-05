@@ -30,7 +30,7 @@
 .header{
     width: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 99;
     background-color: rgba(0, 0, 0, 0.2);
 
     a{
@@ -829,7 +829,7 @@ footer{
     position: fixed;
     padding:40px 20px 0 20px ;
     inset: 0;
-    z-index: 2;
+    z-index: 999;
     backdrop-filter: blur(5px);
     &::after{
         z-index: 4;
