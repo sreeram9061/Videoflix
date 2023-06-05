@@ -6,6 +6,11 @@ import { checkPropertyMylist, myLystContext } from "../context/Globlefile";
 
 const Mylist = () => {
 
+  useMemo(()=>{
+    document.body.scrollTop=0;
+    document.documentElement.scrollTop= 0;
+  },[])
+
   const [list,listDispatch]=useContext(myLystContext)
   const [property,setProperty]=useContext(checkPropertyMylist)
   const {propertyName,reference}=property

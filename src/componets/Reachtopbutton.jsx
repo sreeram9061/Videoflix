@@ -1,37 +1,39 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { FaLongArrowAltUp } from "react-icons/fa";
 const Reachtopbutton = () => {
 
   const topButton=useRef()
-  const [isScreanOnTop,setIsScreanOnTop]=useState(true)
-  
-  const handleScroll=()=>{
-    if(document.documentElement.scrollTop >180 || document.body.scrollTop > 180){
-        setIsScreanOnTop(false)
-    }else{
-        setIsScreanOnTop(true)
-    }
-  }
 
   const handleTop=()=>{
     document.body.scrollTop=0;
     document.documentElement.scrollTop = 0;        
   }
 
+  const handleReachTop =()=>{
+    const scroollPosition= document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight-140
 
+    if(window.matchMedia("(max-width: 940px)").matches && scroollPosition ){
+      topButton.current.style.transform= 'translateY(50px)'
+    }else{
+      topButton.current.style.transform= 'translateY(0)'
+    }
+
+    if(document.documentElement.scrollTop >180 || document.body.scrollTop > 180){
+      topButton.current.style.display='flex'
+    }else{
+      topButton.current.style.display='none'
+    }
+  }
 
   useEffect(()=>{
-    window.addEventListener('scroll',()=>{
-      handleScroll()
-    })
+    window.addEventListener('scroll',handleReachTop)
+    return()=>{
+      window.removeEventListener("scroll",handleReachTop) 
+    }
+  })
 
-/*   window.addEventListener('resize',()=>{
-       if(window.innerWidth<940){
-       }
-    }) */
-  })  
   return (
-    <div ref={topButton}  style={ isScreanOnTop ? {display:'none'} : {display:'flex'}} className="topbtn">
+    <div ref={topButton}   className="topbtn">
         <div className="container">
            <button onClick={handleTop} className="reachtopbutton">
              <FaLongArrowAltUp className="icons"/>

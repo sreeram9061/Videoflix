@@ -30,10 +30,7 @@ const Details = () => {
   let isProperty=JSON.parse(localStorage.getItem('ItemOfDetails')).hasOwnProperty('title')
   let data= isProperty ? useFetch(`/movie/${id}`) : useFetch(`/tv/${id}`)
   
-  useMemo(()=>{
-    document.body.scrollTop=0;
-    document.documentElement.scrollTop= 0;
-  },[])
+
 
   const [similarResult,sError,Sloading]= isProperty? 
   useFetch(`movie/${id}/similar`):
@@ -42,6 +39,11 @@ const Details = () => {
   const[results,errorInfo,loading]=data
   console.log(results)
   const{backdrop_path,genres,overview,poster_path,release_date,first_air_date,runtime,spoken_languages,vote_average}=results
+
+  useMemo(()=>{
+    document.body.scrollTop=0;
+    document.documentElement.scrollTop= 0;
+  },[results])
 
   
   const bgStyle={
