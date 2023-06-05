@@ -1,10 +1,10 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import { useContext, useEffect, useState } from 'react';
+import { useContext} from 'react';
 import { BiAddToQueue } from "react-icons/bi";
 import { TiTick } from "react-icons/ti";
 import { AiFillStar } from "react-icons/ai";
-import { json, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { myLystContext } from '../context/Globlefile';
 import { useCeckItemIsThere } from '../customHocks/useCeckItemIsThere';
 
@@ -19,35 +19,36 @@ const Slider = ({mainSlideResults}) => {
     payload:data,
   })
  }
-      let splideOptions = {
-        heightRatio: 0.5,
-        pagination: false,
-        speed: 500,
-        cover: true,
-        autoplay: true,
-        padding: "0",
-        breakpoints: {
-          640: {
-            heightRatio: 0.54,
-            arrows: false,
-            pagination: true,
-          },
-        },
-      };
+ 
+  let splideOptions = {
+   heightRatio: 0.5,
+   pagination: false,
+   speed: 500,
+   cover: true,
+   autoplay: true,
+   padding: "0",
+   breakpoints: {
+     640: {
+       heightRatio: 0.54,
+       arrows: false,
+       pagination: true,
+     },
+   },
+  };
 
-      const navigate = useNavigate()
-      const handleMovieDetails=(id,item)=>{
-        navigate(`/${id}`)
-        localStorage.setItem('ItemOfDetails',JSON.stringify(item))
-      }
+  const navigate = useNavigate()
+  const handleMovieDetails=(id,item)=>{
+    navigate(`/${id}`)
+    localStorage.setItem('ItemOfDetails',JSON.stringify(item))
+  }
 
 
-      const handleMobileNavigate=(id,item)=>{
-        if(window.matchMedia("(max-width: 940px)").matches){
-          navigate(`/${id}`)
-          localStorage.setItem('ItemOfDetails',JSON.stringify(item))
-        }
-      }
+  const handleMobileNavigate=(id,item)=>{
+    if(window.matchMedia("(max-width: 940px)").matches){
+      navigate(`/${id}`)
+      localStorage.setItem('ItemOfDetails',JSON.stringify(item))
+    }
+  }
 
   return (
 

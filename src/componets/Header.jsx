@@ -2,11 +2,12 @@ import React, { useContext } from 'react'
 import { BsSearch } from "react-icons/bs";
 import Wrapper from './Wrapper';
 import { NavLink,Link } from 'react-router-dom';
-import { TvAndMovieStatus, searchboxContext} from '../context/Globlefile';
+import { TvAndMovieStatus, myLystContext, searchboxContext} from '../context/Globlefile';
 
 const Header = ()=> {
   const [,setIsSearchbox]=useContext(searchboxContext)
   const [,setTvAndMovie]=useContext(TvAndMovieStatus)
+  const [list,listDispatch]=useContext(myLystContext)
 
   return(
     <div className='header'>
@@ -20,7 +21,9 @@ const Header = ()=> {
         </div>
         <div className="rightinner">
           <a className='serach' onClick={()=>setIsSearchbox(true)} ><h3 style={{display:'flex',alignItems:'center',gap:'5px',color:'white'}}>Search<BsSearch className='searchicon'/></h3></a>
-          <NavLink to="/Mylist"><h3>My List</h3></NavLink>
+          <NavLink to="/Mylist">
+            <span className='myList_p'><h3>My List</h3><span className='mylistitemcount' style={ list.length>0 ? {display:"flex"} : {display:"none"}} >{list.length}</span></span>
+          </NavLink>
         </div>
         </div>
       </Wrapper>

@@ -13,7 +13,7 @@ const Toprated = () => {
   useMemo(()=>{
     document.body.scrollTop=0;
     document.documentElement.scrollTop = 0;
-  },[page])
+  },[])
   
     const[data,dataError,dataLoader]= itemNavigate ? 
     useFetch('/movie/top_rated',{page}) :
