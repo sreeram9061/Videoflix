@@ -53,9 +53,13 @@ const Singlecardpag = ({title}) => {
         <Wrapper>
             <h3>{title}</h3>
             {error && <Errorcom Error={error} />}
-            <div className="container">
-                {resultState?.filter(item => item.poster_path).map((item,ind)=> <Infocard key={item.id+ind} data={item}/>)}
-            </div>
+            {
+              !error&& (
+                <div className="container">
+                 {resultState?.filter(item => item.poster_path).map((item,ind)=> <Infocard key={item.id+ind} data={item}/>)}
+                </div>
+              )
+            }
             {!error && pageLoading && <Loading/>}
         </Wrapper>
     </div>
