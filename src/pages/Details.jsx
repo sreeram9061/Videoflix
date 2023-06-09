@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react"
 import { myLystContext } from "../context/Globlefile"
-import { json, useParams } from "react-router-dom"
+import {useParams } from "react-router-dom"
 import Wrapper from "../componets/Wrapper"
 import { useFetch } from "../customHocks/useFetch"
 import { AiFillStar } from "react-icons/ai";
@@ -11,6 +11,7 @@ import Errorcom from "../componets/Errorcom"
 import Card from "../componets/Card"
 import { useCeckItemIsThere } from "../customHocks/useCeckItemIsThere";
 import { useStringMinimize } from "../customHocks/useStringMinimize"
+import { reachTop } from "../customHocks/reachTop"
 
 
 
@@ -23,29 +24,21 @@ const Details = () => {
      type:'LIST_FROM_MAIN_SLIDER',
      payload:data,
    })
-  }
+}
 
-  
-  /*let isProperty=stateDetails.hasOwnProperty('title')*/
   let isProperty=JSON.parse(localStorage.getItem('ItemOfDetails')).hasOwnProperty('title')
   let data= isProperty ? useFetch(`/movie/${id}`) : useFetch(`/tv/${id}`)
   
-
-
   const [similarResult,sError,Sloading]= isProperty? 
   useFetch(`movie/${id}/similar`):
   useFetch(`/tv/${id}/similar`)
 
   const[results,errorInfo,loading]=data
-  console.log(results)
+  
+  useMemo(()=>reachTop(),[results])
+
   const{backdrop_path,genres,overview,poster_path,release_date,first_air_date,runtime,spoken_languages,vote_average}=results
 
-  useMemo(()=>{
-    document.body.scrollTop=0;
-    document.documentElement.scrollTop= 0;
-  },[results])
-
-  
   const bgStyle={
     backgroundImage:` url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`,
     backgroundRepeat: 'no-repeat',
@@ -59,12 +52,12 @@ const Details = () => {
             <Loading/>
           </div>
         )}
-        {errorInfo && <Errorcom/>}
+        {errorInfo && <Errorcom Error={errorInfo}/>}
+
         {
           !loading && !errorInfo && (
             <div className="itemDetails">
             <div className="firstcontainer" style={bgStyle}>
-      
                  <div className="detailsContainer">
                   <Wrapper>
                   <div className="detailsItems">

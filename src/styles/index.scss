@@ -670,7 +670,7 @@ footer{
 }
 
 .backdrop{
-    @include flexBox(column,start,start,5px);
+    @include flexBox(column,none,none,5px);
     padding-bottom: 14px;
     cursor: pointer;
     .image{
@@ -697,7 +697,7 @@ footer{
     }
     .textsection{
         p{
-            @include flexBox(row,center,center,5px);
+            @include flexBox(row,center,start,5px);
             color: white;
 
         }
@@ -734,8 +734,9 @@ footer{
     }
 }
 
+
+
 .mylistcard{
-   
     display: grid;
     box-shadow: -1px 1px 14px -2px rgba(0,0,0,0.75);
     background-color:$backgroundcolorlight;
@@ -773,33 +774,33 @@ footer{
         transform: translateY(-600px);
         @include flexBox(row,center,center,20px);
         .delete{
-            color: white;
-            background-color: $primerycolor;
+            color: red;
+            background-color: white;
             border: none;
             border-radius: 5px;
-            height: 48px;
-            width: 48px;
+            height: 35px;
+            width: 44px;
             @include flexBox(none,center,center,0);
-            font-size:30px;
+            font-size:25px;
             cursor: pointer;
             transition: background-color ease .3s;
             &:hover{
-                background-color: rgb(111, 22, 22);
+                background-color: rgb(222, 220, 220);
             }
         }
         .fullscreen{
             cursor: pointer;
-            color: white;
-            background-color: green;
-            height: 48px;
-            width: 48px;
+            color: green;
+            background-color: white;
+            height: 35px;
+            width: 44px;
             @include flexBox(none,center,center,0);
             border: none;
             border-radius: 5px;
-            font-size: 30px;
+            font-size: 25px;
             transition: background-color ease .3s;
             &:hover{
-                background-color: rgb(23, 90, 23);
+                background-color: rgb(222, 220, 220);
             }
         }
     }

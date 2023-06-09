@@ -1,13 +1,9 @@
 import { useEffect, useRef } from "react";
 import { FaLongArrowAltUp } from "react-icons/fa";
+import { reachTop } from "../customHocks/reachTop";
 const Reachtopbutton = () => {
 
   const topButton=useRef()
-
-  const handleTop=()=>{
-    document.body.scrollTop=0;
-    document.documentElement.scrollTop = 0;        
-  }
 
   const handleReachTop =()=>{
     const scroollPosition= document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight-140
@@ -35,7 +31,7 @@ const Reachtopbutton = () => {
   return (
     <div ref={topButton}   className="topbtn">
         <div className="container">
-           <button onClick={handleTop} className="reachtopbutton">
+           <button onClick={reachTop} className="reachtopbutton">
              <FaLongArrowAltUp className="icons"/>
            </button>
         </div>

@@ -6,14 +6,12 @@ import { topRatedStates } from "../context/Globlefile"
 import { useContext } from "react"
 import Loading from "../componets/Loading"
 import Errorcom from "../componets/Errorcom"
+import { reachTop } from "../customHocks/reachTop"
 const Toprated = () => {
 
  const [itemNavigate,setItemNavigate,page,setPage]= useContext(topRatedStates)
  
-  useMemo(()=>{
-    document.body.scrollTop=0;
-    document.documentElement.scrollTop = 0;
-  },[])
+  useMemo(()=>reachTop(),[])
   
     const[data,dataError,dataLoader]= itemNavigate ? 
     useFetch('/movie/top_rated',{page}) :

@@ -6,6 +6,7 @@ import { useFetch } from "../customHocks/useFetch"
 import Loading from "../componets/Loading"
 import { useMemo } from "react"
 import HomePosterSlider from "../componets/HomePosterSlider"
+import { reachTop } from "../customHocks/reachTop"
 
 function Home() {
   const [mainSlideResults,mainSlideErrorInfo,slideLoading]=useFetch('/movie/now_playing',{page:1})
@@ -16,10 +17,7 @@ function Home() {
   const loading=[slideLoading,cardloading,cardTowLoading].some(item=> item==true)
   const errorIsIn=[mainSlideErrorInfo,cardDataErrorInfo,cardDataErrorInTow].every(item=> item? true : false)
 
-  useMemo(()=>{
-    document.body.scrollTop=0;
-    document.documentElement.scrollTop= 0;
-  },[])
+  useMemo(()=>reachTop(),[])
 
   
 

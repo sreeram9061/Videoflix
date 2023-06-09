@@ -5,6 +5,8 @@ import {  useContext, useEffect,useMemo,useState } from "react"
 import { TvAndMovieStatus } from "../context/Globlefile"
 import { useDeleteDuplicate } from "../customHocks/useDeleteDuplicate"
 import Loading from "../componets/Loading"
+import Errorcom from "../componets/Errorcom"
+import { reachTop } from "../customHocks/reachTop"
 
 const Singlecardpag = ({title}) => {
     
@@ -24,15 +26,12 @@ const Singlecardpag = ({title}) => {
         }
     }
 
-    console.log(result)
-
-
+  
 
     useMemo(()=>{
       setResult([])
       setPage(1)
-      document.body.scrollTop=0;
-      document.documentElement.scrollTop = 0;
+      reachTop()
     },[TvAndMovieState])
 
     useMemo(()=>{
@@ -52,6 +51,7 @@ const Singlecardpag = ({title}) => {
     <div className="singlecardspag">
         <Wrapper>
             <h3>{title}</h3>
+            {error && <Errorcom Error={error} />}
             <div className="container">
                 {resultState?.map((item,ind)=> <Infocard key={item.id+ind} data={item}/>)}
             </div>

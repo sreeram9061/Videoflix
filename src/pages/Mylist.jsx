@@ -1,15 +1,12 @@
 import CardMylist from "../componets/CardMylist"
 import Wrapper from "../componets/Wrapper"
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import { checkPropertyMylist, myLystContext } from "../context/Globlefile";
+import { reachTop } from "../customHocks/reachTop";
 
 
 const Mylist = () => {
-
-  useMemo(()=>{
-    document.body.scrollTop=0;
-    document.documentElement.scrollTop= 0;
-  },[])
+  useMemo(()=>reachTop(),[])
 
   const [list,listDispatch]=useContext(myLystContext)
   const [property,setProperty]=useContext(checkPropertyMylist)
@@ -49,8 +46,7 @@ const Mylist = () => {
     })
     refsStore(ref.current)
   }
-
-  console.log(list)
+  
   return (
     <Wrapper>
        <div className="mylist">
