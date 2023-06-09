@@ -21,7 +21,7 @@ const Singlecardpag = ({title}) => {
 
     
     const handleCheck =()=>{
-        if(window.innerHeight+document.documentElement.scrollTop+1 >= document.documentElement.scrollHeight){
+        if(window.innerHeight+document.documentElement.scrollTop+1 >= document.documentElement.scrollHeight-100){
           setPage((pre)=>pre+1)
           setPageLoading(true)
         }
