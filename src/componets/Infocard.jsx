@@ -16,9 +16,7 @@ const Infocard = ({data}) => {
             <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
             <p>Rating : {vote_average}<AiFillStar className="icon"/></p>
         </div>
-        <div className="cardtitle">
-            <h3>{title || original_name}</h3>
-        </div>
+
     </div>
   )
 }

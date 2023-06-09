@@ -27,7 +27,7 @@ const Toprated = () => {
 
       <div className="toprated">
       {dataLoader && <Loading/>}
-      {dataError && <Errorcom/>}
+      {dataError && <Errorcom Error={dataError}/>}
       {!dataLoader && !dataError &&(
                       <Wrapper>
                       <div className="moviecontainer gridCont">
@@ -41,7 +41,7 @@ const Toprated = () => {
             
                         <div className="container">
                         {
-                          data?.map(item=>
+                          data?.filter(item => item.backdrop_path).map(item=>
                               <Backdropcard key={item.id} item={item} />
                           )
                         }
