@@ -57,7 +57,7 @@ const Mylist = () => {
         </div>
         {
           
-          list.length==0?(
+          list.length==0 ?(
           <div className="emty">
             <h2>List is Empty</h2>
           </div>

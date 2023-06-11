@@ -15,7 +15,7 @@ const Slider = ({mainSlideResults}) => {
 
  const handleList=(data)=>{
   listDispatch({
-    type:'LIST_FROM_MAIN_SLIDER',
+    type:'ADD_LIST',
     payload:data,
   })
  }
@@ -37,8 +37,9 @@ const Slider = ({mainSlideResults}) => {
   };
 
   const navigate = useNavigate()
-  const handleMovieDetails=(id,item)=>{
-    navigate(`/${id}`)
+
+  const handleMovieDetails=(item)=>{
+    navigate(`/${item.id}`)
     localStorage.setItem('ItemOfDetails',JSON.stringify(item))
   }
 
@@ -68,7 +69,7 @@ const Slider = ({mainSlideResults}) => {
                               <button style={{border:'2px solid green' ,color:'green' ,backgroundColor:'transparent',cursor:'no-drop'}} disabled ><TiTick/>Added</button> :
                               <button className='btnone' onClick={()=>handleList(item)} ><BiAddToQueue/> Add to list</button>
                             }
-                           <button onClick={()=>handleMovieDetails(item.id,item)} className='btntow' >More</button>
+                           <button onClick={()=>handleMovieDetails(item)} className='btntow' >More</button>
                            <p className='reating shadow'><AiFillStar style={{color:'gold'}} />{item.vote_average}</p>
                            </div>
                         </div>

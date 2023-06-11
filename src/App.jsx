@@ -5,7 +5,6 @@ import Home from './pages/Home'
 import Header from './componets/Header'
 import Mobileslider from './componets/Mobileslider'
 import Footer from './componets/Footer'
-import MovieDetails from './pages/Details'
 import { Route, Routes } from "react-router-dom"
 import Singlecardpag from './pages/Singlecardpag'
 import Reachtopbutton from './componets/Reachtopbutton'

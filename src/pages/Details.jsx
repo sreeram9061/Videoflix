@@ -1,7 +1,7 @@
 import { useContext, useMemo } from "react"
 import { myLystContext } from "../context/Globlefile"
 import {useParams } from "react-router-dom"
-import Wrapper from "../componets/Wrapper"
+import   Wrapper from "../componets/Wrapper"
 import { useFetch } from "../customHocks/useFetch"
 import { AiFillStar } from "react-icons/ai";
 import { BiAddToQueue } from "react-icons/bi";
@@ -16,26 +16,24 @@ import { reachTop } from "../customHocks/reachTop"
 
 
 const Details = () => {
+
   const{id}=useParams()
   const [,listDispatch]=useContext(myLystContext)
 
   const handleList=(data)=>{
    listDispatch({
-     type:'LIST_FROM_MAIN_SLIDER',
+     type:'ADD_LIST',
      payload:data,
    })
-}
+  }
 
   let isProperty=JSON.parse(localStorage.getItem('ItemOfDetails')).hasOwnProperty('title')
-  let data= isProperty ? useFetch(`/movie/${id}`) : useFetch(`/tv/${id}`)
-  
+  let[results,errorInfo,loading]= isProperty ? useFetch(`/movie/${id}`) : useFetch(`/tv/${id}`)
+  useMemo(()=> reachTop() ,[results])
+
   const [similarResult,sError,Sloading]= isProperty? 
   useFetch(`movie/${id}/similar`):
   useFetch(`/tv/${id}/similar`)
-
-  const[results,errorInfo,loading]=data
-  
-  useMemo(()=>reachTop(),[results])
 
   const{backdrop_path,genres,overview,poster_path,release_date,first_air_date,runtime,spoken_languages,vote_average}=results
 
@@ -45,6 +43,7 @@ const Details = () => {
     backgroundSize:'cover',
     backgroundPosition:'center top'
   }
+
   return (
     <>
         {loading && (
@@ -73,11 +72,11 @@ const Details = () => {
                         </div>
                         <p>Release Date : {release_date ? release_date : first_air_date}</p> 
 
-                        <p>Runtime :{runtime ? ` ${runtime} minutes` : ` ${results.episode_run_time.map(item=> item)} minutes`}</p>
+                        <p>Runtime :{runtime ? ` ${runtime} minutes` : ` ${results.episode_run_time?.map(item=> item)} minutes`}</p>
                         <div className="genres">
                         <p>Language : {spoken_languages?.map(({name},ind)=> spoken_languages.length-1!=ind? `${name}, ` :`${name}`)}</p>
                         </div>
-  
+
                         <div className="addfavorite_rate">
                           {
                             useCeckItemIsThere(results) ?
